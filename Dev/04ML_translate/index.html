@@ -447,21 +447,35 @@
         
           <li class="md-nav__item">
   <a href="#21" class="md-nav__link">
-    2.1 导入模块
+    2.1 新建密钥
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#22" class="md-nav__link">
-    2.2 添加密钥
+    2.2 新建项目
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#23" class="md-nav__link">
-    2.3 设置源语言和目标语言
+    2.3 导入模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 添加密钥
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    2.5 设置源语言和目标语言
   </a>
   
 </li>
@@ -564,21 +578,35 @@
         
           <li class="md-nav__item">
   <a href="#21" class="md-nav__link">
-    2.1 导入模块
+    2.1 新建密钥
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#22" class="md-nav__link">
-    2.2 添加密钥
+    2.2 新建项目
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#23" class="md-nav__link">
-    2.3 设置源语言和目标语言
+    2.3 导入模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 添加密钥
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    2.5 设置源语言和目标语言
   </a>
   
 </li>
@@ -633,9 +661,15 @@
 
 <h1 id="_1">开发记录（四）机器翻译<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="1">1 模块介绍<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>借助了腾讯云机器翻译 API 实现对关键词列表的批量翻译，并且将翻译模块封装成单个模块，以便主模块更灵活地调用批量翻译功能。</p>
+<p>本模块借助了腾讯云机器翻译 API 的批量文本翻译功能，实现对关键词列表的批量翻译，并且将翻译模块封装成单个模块，以便主模块更灵活地调用批量翻译功能。</p>
 <h2 id="2-api">2 API 相关配置<a class="headerlink" href="#2-api" title="Permanent link">&para;</a></h2>
-<h3 id="21">2.1 导入模块<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<h3 id="21">2.1 新建密钥<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>首先需要在腾讯云控制台中建立密钥，密钥包括 SecretId，SecretKey 两个核心内容</p>
+<p><a class="glightbox" href="../img/image-20230320172302614.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20230320172302614" src="../img/image-20230320172302614.png" /></a></p>
+<h3 id="22">2.2 新建项目<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>在创建密钥后，还需要新建项目使用项目 ID 才能正式实现腾讯云机器翻译 API 的调用。</p>
+<p><a class="glightbox" href="../img/image-20230531212451743.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20230531212451743" src="../img/image-20230531212451743.png" /></a></p>
+<h3 id="23">2.3 导入模块<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
 <p>导入腾讯云机器翻译 API 相关模块</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -647,15 +681,15 @@
 <span class="kn">from</span> <span class="nn">tencentcloud.common.exception.tencent_cloud_sdk_exception</span> <span class="kn">import</span> <span class="n">TencentCloudSDKException</span>
 <span class="kn">from</span> <span class="nn">tencentcloud.tmt.v20180321</span> <span class="kn">import</span> <span class="n">tmt_client</span><span class="p">,</span> <span class="n">models</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="22">2.2 添加密钥<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
-<p>首先需要在腾讯云控制台中建立密钥，将建立的腾讯云 API 密钥以及对应的应用 ID 添加在程序中，才能正常的使用 API 的翻译功能。</p>
+<h3 id="24">2.4 添加密钥<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<p>将创建好的腾讯云 API 密钥对和项目 ID 添加到程序中，才能正常的使用 API 的翻译功能。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">secretId</span> <span class="o">=</span> <span class="s2">&quot;……&quot;</span>
 <span class="n">secretKey</span> <span class="o">=</span> <span class="s2">&quot;……&quot;</span>
 <span class="n">projectId</span> <span class="o">=</span> <span class="err">……</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="23">2.3 设置源语言和目标语言<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<h3 id="25">2.5 设置源语言和目标语言<a class="headerlink" href="#25" title="Permanent link">&para;</a></h3>
 <p>程序中自动识别源语言，将所有内容都翻译为中文。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>source = &quot;auto&quot;
@@ -701,7 +735,7 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
         <!-- mkdocs-git-revision-date-localized-plugin -->
         
         最后更新:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-31T20:33:31+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-31</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-31T21:41:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-31</span>
         
         <br />
         创建日期:
