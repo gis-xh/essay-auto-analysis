@@ -1,0 +1,111 @@
+# [Info] 基本信息
+site_name: WOS 论文自动化分析工具 # 左上角标题
+site_url: https://github.com/gis-xh/essay-auto-analysis
+site_author: gis-xh
+site_description: WOS 论文自动化分析工具
+
+# [UI] 界面设置
+## [top]
+theme:
+  name: material
+  custom_dir: docs\overrides
+  palette: 
+    - scheme: default # 默认日间模式
+      primary: indigo # 上方的
+      accent: orange # 链接等可交互元件的高亮色
+      toggle:
+        icon: material/weather-night # 图标
+        name: 切换至夜间模式 # 鼠标悬浮提示
+    - scheme: slate # 夜间模式
+      primary: indigo
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: 切换至日间模式
+  features:
+    - content.code.copy # 代码复制
+    - navigation.tabs # 使用Tab来进行分类
+    - navigation.top # 返回顶部的按钮 在上滑时出现
+    - navigation.footer # 上一个下一个按钮
+    - navigation.indexes # Tab会有一个index.md 而不是在打开Tab时打开第一篇文章
+    - navigation.expand # 打开Tab时左侧目录全部展开
+    - search.suggest # 搜索输入一些字母时推荐补全整个单词
+    - search.highlight # 搜索出的文章关键词加入高亮
+    - search.share # 将搜索结果分享
+  language: zh # 一些提示性的文字会变成中文
+  icon:
+    repo: fontawesome/brands/github-alt
+edit_uri: edit/main/docs # 编辑按钮跳转的链接
+## [top-right corner]
+repo_url: https://github.com/gis-xh/essay-auto-analysis # 右上角点击跳转的链接
+repo_name: gis-xh/gis-rs-python-notes # 右上角的名字
+## [bottom-left corner]
+copyright: Copyright &copy; 2023 gis-xh # 左下角的版权声明
+## [bottom-right corner]
+extra:
+  social: # icons
+    - icon: fontawesome/brands/github
+      link: https://github.com/gis-xh
+      name: GitHub | gis-xh # 鼠标悬浮提示
+  # analytics: # 站点分析
+  #   provider: google
+  #   property: G-TMF8D9R197
+
+# [Navigtion] 导航栏
+nav:
+  - 开发记录: 
+    - 0 环境配置: Dev\00setup.md
+    - 1 WOS 论文检索: Dev\01wos_search.md
+    - 2 数据预处理: Dev\02data_preprocessing.md
+    - 3 词频统计: Dev\03keywords_count.md
+    - 4 机器翻译: Dev\04ML_translate.md
+    - 5 词云图绘制: Dev\05wordsclound.md
+    # - 使用教程:
+
+
+# [Extensions] 扩展
+plugins:
+  - search:
+      lang:
+        - en
+        - ja
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - tags # 给单篇文章添加标签 https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/?h=tags
+  - git-revision-date-localized: # 日期显示
+      # ["date","datetime","iso_date","iso_datetime","timeago","custom"]
+      type: timeago
+      enable_creation_date: true # 创建时间
+      timezone: Asia/Shanghai
+  - git-authors # 显示作者
+  - glightbox # 图像缩放
+  - meta-manager # 元数据管理
+
+markdown_extensions:
+  - pymdownx.arithmatex: # latex支持
+      generic: true
+  - attr_list # 给图片后面添加{width="300"}设置大小
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true # 固定标题位置为当前位置
+  - pymdownx.highlight: # 代码块高亮
+      linenums: true # 显示行号
+      linenums_style: table
+      # auto_title: true # 显示编程语言名称
+  - pymdownx.superfences # 代码块高亮插件
+  - pymdownx.inlinehilite # 段落中内置的小代码高亮
+  # - meta # 支持Markdown文件上方自定义标题标签等
+  - admonition # https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks
+  - pymdownx.details # admonition需要
+  - pymdownx.caret # markdown上标显示
+  - pymdownx.tilde # markdown下标显示
+  - pymdownx.mark # markdown突出显示
+
+extra_javascript:
+  # latex支持
+  - mkdocs/js/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+extra_css:
+  - mkdocs/css/unordered-list-symbols.css # 多个无序列表符号
+  - mkdocs/css/img-center.css # 图像居中

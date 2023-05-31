@@ -16,9 +16,13 @@ def read_column(source_file, source_column):
     words_list = words.tolist() # 转换为列表
     return words_list
 
-# 定义密钥对
-SecretId = "AKIDpW7YlusdAUbVAbnkTFn5KUXURGuPjtwo"
-SecretKey = "hIivtfAxXyGRXTHvMfswthnvujVBh0Gi"
+# 设置腾讯云 API 密钥和项目 ID
+secretId = "AKIDpW7YlusdAUbVAbnkTFn5KUXURGuPjtwo"
+secretKey = "hIivtfAxXyGRXTHvMfswthnvujVBh0Gi"
+projectId = 1286675
+# 设置源语言和目标语言
+source = "auto"
+target = "zh"
 
 # 批量翻译
 def translate_words(source_file, source_column):
@@ -26,7 +30,7 @@ def translate_words(source_file, source_column):
         # 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey，此处还需注意密钥对的保密
         # 代码泄露可能会导致 SecretId 和 SecretKey 泄露，并威胁账号下所有资源的安全性。以下代码示例仅供参考，建议采用更安全的方式来使用密钥，请参见：https://cloud.tencent.com/document/product/1278/85305
         # 密钥可前往官网控制台 https://console.cloud.tencent.com/cam/capi 进行获取
-        cred = credential.Credential(SecretId, SecretKey)
+        cred = credential.Credential(secretId, secretKey)
         # 实例化一个http选项，可选的，没有特殊需求可以跳过
         httpProfile = HttpProfile()
         httpProfile.endpoint = "tmt.tencentcloudapi.com"
@@ -42,9 +46,9 @@ def translate_words(source_file, source_column):
         # 实例化一个请求对象,每个接口都会对应一个request对象
         req = models.TextTranslateBatchRequest()
         params = {
-            "Source": "auto",
-            "Target": "zh",
-            "ProjectId": 1286675,
+            "Source": source,
+            "Target": target,
+            "ProjectId": projectId,
             "SourceTextList": words_list
         }
         req.from_json_string(json.dumps(params))
