@@ -17,3 +17,5 @@ conda activate essay_auto
 ```sh
 jupyterlab
 ```
+
+在线说明文档：https://gis-xh.github.io/essay-auto-analysis/
