@@ -17,9 +17,9 @@ def read_column(source_file, source_column):
     return words_list
 
 # 设置腾讯云 API 密钥和项目 ID
-secretId = "AKIDpW7YlusdAUbVAbnkTFn5KUXURGuPjtwo"
-secretKey = "hIivtfAxXyGRXTHvMfswthnvujVBh0Gi"
-projectId = 1286675
+secretId = "……"
+secretKey = "……"
+projectId = 1111111
 # 设置源语言和目标语言
 source = "auto"
 target = "zh"
