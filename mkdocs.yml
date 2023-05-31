@@ -8,7 +8,7 @@ site_description: WOS 论文自动化分析工具
 ## [top]
 theme:
   name: material
-  custom_dir: docs\overrides
+  custom_dir: docs/overrides
   palette: 
     - scheme: default # 默认日间模式
       primary: indigo # 上方的
@@ -54,12 +54,12 @@ extra:
 # [Navigtion] 导航栏
 nav:
   - 开发记录: 
-    - 0 环境配置: Dev\00setup.md
-    - 1 WOS 论文检索: Dev\01wos_search.md
-    - 2 数据预处理: Dev\02data_preprocessing.md
-    - 3 词频统计: Dev\03keywords_count.md
-    - 4 机器翻译: Dev\04ML_translate.md
-    - 5 词云图绘制: Dev\05wordsclound.md
+    - 0 环境配置: Dev/00setup.md
+    - 1 WOS 论文检索: Dev/01wos_search.md
+    - 2 数据预处理: Dev/02data_preprocessing.md
+    - 3 词频统计: Dev/03keywords_count.md
+    - 4 机器翻译: Dev/04ML_translate.md
+    - 5 词云图绘制: Dev/05wordsclound.md
     # - 使用教程:
 
 
