@@ -12,20 +12,18 @@
         <meta name="author" content="gis-xh">
       
       
-        <link rel="canonical" href="https://github.com/gis-xh/essay-auto-analysis/Dev/03keywords_count/">
+        <link rel="canonical" href="https://github.com/gis-xh/essay-auto-analysis/Example/SIF/">
       
       
-        <link rel="prev" href="../02data_preprocessing/">
+        <link rel="prev" href="../../Dev/05wordsclound/">
       
-      
-        <link rel="next" href="../04ML_translate/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
-        <title>3 词频统计 - WOS 论文自动化分析工具</title>
+        <title>0 示例与自述以SIF为例 - WOS 论文自动化分析工具</title>
       
     
     
@@ -94,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#wos-sif" class="md-skip">
           跳转至
         </a>
       
@@ -127,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3 词频统计
+              0 示例与自述以SIF为例
             
           </span>
         </div>
@@ -231,15 +229,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../00setup/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../Dev/00setup/" class="md-tabs__link">
         开发记录
       </a>
     </li>
@@ -249,13 +245,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Example/SIF/" class="md-tabs__link">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         实践案例
       </a>
     </li>
@@ -312,16 +310,16 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
       
       
         
@@ -344,7 +342,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_1">
           <span class="md-nav__icon md-icon"></span>
           开发记录
@@ -357,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00setup/" class="md-nav__link">
+      <a href="../../Dev/00setup/" class="md-nav__link">
         0 环境配置
       </a>
     </li>
@@ -371,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01wos_search/" class="md-nav__link">
+      <a href="../../Dev/01wos_search/" class="md-nav__link">
         1 WOS 论文检索
       </a>
     </li>
@@ -385,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02data_preprocessing/" class="md-nav__link">
+      <a href="../../Dev/02data_preprocessing/" class="md-nav__link">
         2 数据预处理
       </a>
     </li>
@@ -397,99 +395,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          3 词频统计
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Dev/03keywords_count/" class="md-nav__link">
         3 词频统计
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    1 同类词合并
-  </a>
-  
-    <nav class="md-nav" aria-label="1 同类词合并">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    1.1 关键词提取
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
-    1.2 同类词合并
-  </a>
-  
-    <nav class="md-nav" aria-label="1.2 同类词合并">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#121" class="md-nav__link">
-    1.2.1 建立专业术语映射表
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#122" class="md-nav__link">
-    1.2.2 合并同类词
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    2 词频统计
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -501,7 +411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04ML_translate/" class="md-nav__link">
+      <a href="../../Dev/04ML_translate/" class="md-nav__link">
         4 机器翻译
       </a>
     </li>
@@ -515,7 +425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05wordsclound/" class="md-nav__link">
+      <a href="../../Dev/05wordsclound/" class="md-nav__link">
         5 词云图绘制
       </a>
     </li>
@@ -535,16 +445,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-        
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
       
       
         
@@ -557,7 +467,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           实践案例
@@ -568,11 +478,270 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Example/SIF/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          0 示例与自述以SIF为例
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         0 示例与自述以SIF为例
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一、研究介绍
+  </a>
+  
+    <nav class="md-nav" aria-label="一、研究介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 研究动机
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 核心思路
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 相关概念
+  </a>
+  
+    <nav class="md-nav" aria-label="3 相关概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-web-of-science-wos" class="md-nav__link">
+    2.1 Web of Science (WOS)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-sif" class="md-nav__link">
+    2.2 SIF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 论文分析工具
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 知识图谱
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    二、研究目标
+  </a>
+  
+    <nav class="md-nav" aria-label="二、研究目标">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1 主要解决问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2 创新点和贡献
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3 研究预期结果
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    三、研究方法
+  </a>
+  
+    <nav class="md-nav" aria-label="三、研究方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    1 数据预处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    2 抽取实体关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3 构建知识图谱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 泛用性推广
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    四、研究进展
+  </a>
+  
+    <nav class="md-nav" aria-label="四、研究进展">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    1 数据清洗
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    2 术语库制作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    3 词频统计与词云图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    4 机器翻译
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    五、最新动态
+  </a>
+  
+    <nav class="md-nav" aria-label="五、最新动态">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-new-bing" class="md-nav__link">
+    5.1 New Bing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-chatgpt-academic" class="md-nav__link">
+    5.2 ChatGPT Academic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-chatgpt-zotero" class="md-nav__link">
+    5.3 ChatGPT + Zotero
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    六、总结与展望
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -611,38 +780,59 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一、研究介绍
+  </a>
+  
+    <nav class="md-nav" aria-label="一、研究介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    1 同类词合并
-  </a>
-  
-    <nav class="md-nav" aria-label="1 同类词合并">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    1.1 关键词提取
+    1 研究动机
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
-    1.2 同类词合并
-  </a>
-  
-    <nav class="md-nav" aria-label="1.2 同类词合并">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#121" class="md-nav__link">
-    1.2.1 建立专业术语映射表
+  <a href="#2" class="md-nav__link">
+    2 核心思路
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#122" class="md-nav__link">
-    1.2.2 合并同类词
+  <a href="#3" class="md-nav__link">
+    3 相关概念
+  </a>
+  
+    <nav class="md-nav" aria-label="3 相关概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-web-of-science-wos" class="md-nav__link">
+    2.1 Web of Science (WOS)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-sif" class="md-nav__link">
+    2.2 SIF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 论文分析工具
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 知识图谱
   </a>
   
 </li>
@@ -658,8 +848,158 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    2 词频统计
+  <a href="#_2" class="md-nav__link">
+    二、研究目标
+  </a>
+  
+    <nav class="md-nav" aria-label="二、研究目标">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1 主要解决问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2 创新点和贡献
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3 研究预期结果
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    三、研究方法
+  </a>
+  
+    <nav class="md-nav" aria-label="三、研究方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    1 数据预处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    2 抽取实体关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3 构建知识图谱
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 泛用性推广
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    四、研究进展
+  </a>
+  
+    <nav class="md-nav" aria-label="四、研究进展">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    1 数据清洗
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    2 术语库制作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    3 词频统计与词云图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    4 机器翻译
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    五、最新动态
+  </a>
+  
+    <nav class="md-nav" aria-label="五、最新动态">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-new-bing" class="md-nav__link">
+    5.1 New Bing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-chatgpt-academic" class="md-nav__link">
+    5.2 ChatGPT Academic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-chatgpt-zotero" class="md-nav__link">
+    5.3 ChatGPT + Zotero
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    六、总结与展望
   </a>
   
 </li>
@@ -686,111 +1026,135 @@
   
 
 
-<h1 id="_1">开发记录（三）关键词词频统计<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="1">1 同类词合并<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>在使用 pandas 对存储 wos 论文数据的 <code>*.xlsx</code> 文件中关键词进行词频统计前，将同义词以及相同含义的专业术语进行合并，从而提升词频统计精确度。</p>
-<h3 id="11">1.1 关键词提取<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
-<p>由于 WOS 检索得到论文信息中包含文章关键词和 WOS 关键词，所以需要：</p>
+<h1 id="wos-sif">基于 WOS 论文信息数据构建目标研究领域知识网络和知识图谱：以 SIF 领域研究为例<a class="headerlink" href="#wos-sif" title="Permanent link">&para;</a></h1>
+<h2 id="_1">一、研究介绍<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本节介绍本研究动机和核心思路，以及涉及到的相关概念，如 WOS、SIF、论文分析工具、知识图谱等。</p>
+<h3 id="1">1 研究动机<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>首先，将两列关键词的内容进行拼接</li>
-<li>然后，将每行多个关键词，用分号分割成一个关键词列表</li>
-<li>最后，并将所有关键词格式化（首字母大写）</li>
+<li>首先，在进行 SIF 领域的研究时，需要阅读大量的相关论文摘要，但是由于时间和精力的限制，无法逐一阅读。因此，希望开发一个能够自动化提取论文元数据（如研究方向、研究方法、研究区域、研究应用、相关期刊、引领研究的国家等）的工具，以便快速了解论文的主要内容和特点。</li>
+<li>其次，受到 Connected Papers 和 CiteSpace 等论文网络分析和可视化方法的启发，想要结合自身需求设计出一个能够对批量论文信息进行网络分析和可视化的工具，以便发现论文之间的联系和规律，以及目标领域的知识结构和发展趋势。</li>
+<li>最后，想要将自己接触到的业务开发与科研工作相结合，将自身做学融汇贯通，形成属于自己的一个完整的系统。</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># 将所有关键词合并成列表并全部首字母大写化</span>
-<span class="k">def</span> <span class="nf">all_keywords</span><span class="p">(</span><span class="n">inputFile</span><span class="p">):</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">inputFile</span><span class="p">)</span>
-    <span class="c1"># 以分号合并两列关键词内容，并以分号切割成列表，需要注意的是 &quot;; &quot; 而不是 &quot;;&quot;</span>
-    <span class="n">keywords</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;作者关键词&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;; &quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;WOS 关键词&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>
-    <span class="n">word_list</span> <span class="o">=</span> <span class="n">keywords</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>
-    <span class="c1"># 使用列表推导式和 str.title () 方法将列表中的字符串全部转换为首字母大写</span>
-    <span class="c1"># str.upper () 全体大写</span>
-    <span class="n">word_list_upper</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">word_list</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">word_list_upper</span>
-</code></pre></div>
-<h3 id="12">1.2 同类词合并<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
-<h4 id="121">1.2.1 建立专业术语映射表<a class="headerlink" href="#121" title="Permanent link">&para;</a></h4>
-<p>建立一个同义词和专业术语的映射表 (<code>related_terms.xlsx</code>)，把不同的表达方式但是意思相同的单词或短语统一为一个标准的词汇，以便于后续的词频统计。表格内容如下：</p>
-<table>
-<thead>
-<tr>
-<th>Original_Word</th>
-<th>Mapping_Word</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Gpp</td>
-<td>Gross Primary Production</td>
-</tr>
-<tr>
-<td>Gross Primary Productivity</td>
-<td>Gross Primary Production</td>
-</tr>
-<tr>
-<td>Gross Primary Production (Gpp)</td>
-<td>Gross Primary Production</td>
-</tr>
-<tr>
-<td>Gross Primary Productivity  (Gpp)</td>
-<td>Gross Primary Production</td>
-</tr>
-<tr>
-<td>Npp</td>
-<td>Net Primary Production</td>
-</tr>
-<tr>
-<td>Sif</td>
-<td>Solar-Induced Chlorophyll Fluorescence</td>
-</tr>
-<tr>
-<td>……</td>
-<td>……</td>
-</tr>
-</tbody>
-</table>
-<h4 id="122">1.2.2 合并同类词<a class="headerlink" href="#122" title="Permanent link">&para;</a></h4>
-<p><code>pd.merge()</code> 函数把处理好的关键词列表和映射表进行合并：</p>
+<p><a class="glightbox" href="../img/image-20230330010939852.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20230330010939852" src="../img/image-20230330010939852.png" /></a></p>
+<h3 id="2">2 核心思路<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>本研究利用 Python 工具对 Web of Science 检索到的某一目标领域（以 SIF 太阳诱导的叶绿素荧光遥感为例）的相关论文信息数据进行分析，构建该领域的知识网络和知识图谱，实现对该领域核心内容的快速理解和掌握，为科研工作提供支持。本研究涉及到自然语言处理、图论等相关领域的方法和技术，具有一定的创新性和实用性。</p>
+<h3 id="3">3 相关概念<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<h4 id="21-web-of-science-wos">2.1 Web of Science (WOS)<a class="headerlink" href="#21-web-of-science-wos" title="Permanent link">&para;</a></h4>
+<p>Web of Science 是一个大型综合性、多学科、核心期刊引文索引数据库，包括科学引文索引、社会科学引文索引、艺术与人文科学引文索引等，可以用来检索论文、分析领域发展趋势、查询期刊影响因子等。</p>
+<p><a class="glightbox" href="../img/image-20230316232232340.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20230316232232340" src="../img/image-20230316232232340.png" /></a></p>
+<h4 id="22-sif">2.2 SIF<a class="headerlink" href="#22-sif" title="Permanent link">&para;</a></h4>
+<p>Solar induced chlorophyll fluorescence(SIF) 是指植物叶片在光合作用过程中发出的一种微弱的荧光，可以反映植物的光合活性和生态系统的碳循环状态。</p>
 <ul>
-<li>
-<p>指定合并方式为左连接（left join），以保留所有原始关键词</p>
-</li>
-<li>
-<p>指定合并依据为原始词（left_on）和映射词（right_on）</p>
+<li>太阳、叶片、反射、荧光、光合作用、热量、透光</li>
+</ul>
+<p><a class="glightbox" href="../img/photosynthesis.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="photosynthesis" src="../img/photosynthesis.jpg" /></a></p>
+<h4 id="23">2.3 论文分析工具<a class="headerlink" href="#23" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Connected Papers：是一个在线工具，可以根据一篇论文找到相关的论文，并以图形的方式展示它们之间的联系，帮助用户探索某个领域的知识网络，发现研究热点和前沿。</li>
+</ul>
+<p><a class="glightbox" href="../img/image-20230319152854163.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20230319152854163" src="../img/image-20230319152854163.png" /></a></p>
+<ul>
+<li>CiteSpace：是一个基于Java的可视化分析软件，可以对Web of Science等数据库中的文献数据进行引文网络分析，揭示出学科领域的知识结构和演化过程。</li>
+</ul>
+<p><a class="glightbox" href="../img/citespace.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="citespace" src="../img/citespace.png" /></a></p>
+<h4 id="24">2.4 知识图谱<a class="headerlink" href="#24" title="Permanent link">&para;</a></h4>
+<p>知识图谱是一种表示和存储知识的结构化数据模型，由实体、属性和关系组成，可以用来描述复杂的概念和语义信息，支持智能检索和推理。</p>
+<p>知识图谱（Knowledge Graph）是一种用结构化的形式描述客观世界中概念、实体及其之间关系的语义网络，可以将互联网的信息表达成更接近人类认知世界的形式，提供了一种更好地组织、管理和理解互联网海量信息的能力。知识图谱的基本组成单位是“实体—关系—实体”三元组，以及实体及其相关属性—值对，实体间通过关系相互联结，构成网状的知识结构。</p>
+<p>知识图谱可以分为通用知识图谱和特定领域知识图谱，通用知识图谱面向的是通用领域，强调知识的广度，形态通常为结构化的百科知识；特定领域知识图谱则面向某一特定领域，强调知识的深度，通常需要基于该行业的数据库进行构建。</p>
+<p>知识图谱涉及的技术主要包括知识抽取、知识表示、知识融合、知识推理等，这些技术可以帮助从不同来源的数据中获取、整合和利用知识，构建和完善知识图谱。</p>
+<p>知识图谱有很多应用场景，比如搜索引擎、智能问答、推荐系统、数据分析等，它们都可以利用知识图谱提高信息检索、理解和交互的效率和质量。</p>
+<h2 id="_2">二、研究目标<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>本节介绍本研究要解决的问题，以及本研究的创新点、贡献和预期结果。</p>
+<h3 id="1_1">1 主要解决问题<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>本研究主要解决以下三个问题：</p>
+<ul>
+<li>如何有效地清洗 Web of Science 论文信息数据，保证数据的完整性和准确性？</li>
+<li>如何利用自然语言处理和图论等方法从论文信息数据中提取知识元素和知识关系，构建知识图谱？</li>
+<li>如何评价构建的知识图谱的质量和效果，以及如何实现其泛用性和可扩展性？</li>
+</ul>
+<h3 id="2_1">2 创新点和贡献<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>本研究有以下几个创新点和贡献：</p>
+<ul>
+<li>本研究基于自然语言处理和图论等方法构建知识图谱，实现了对目标领域核心内容的可视化呈现和深入挖掘。</li>
+<li>本研究设计了一套合理的评价指标和方法，对构建的知识图谱进行了质量和效果的评估，并探讨了其在其他领域的应用可能性。</li>
+<li>本研究在SIF领域进行了实验验证，展示了本方法在该领域的有效性和优越性。</li>
+</ul>
+<h3 id="3_1">3 研究预期结果<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>本研究预期得到以下几个结果：</p>
+<ul>
+<li>一个能够自动化分析 Web of Science 论文信息数据的 Python 工具。</li>
+<li>一个能够反映 SIF 领域核心内容和知识结构的知识图谱。</li>
+<li>一个能够评价知识图谱质量和效果的评价体系。</li>
+<li>一个能够探讨知识图谱泛用性和可扩展性的研究报告。</li>
+</ul>
+<h2 id="_3">三、研究方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>本节介绍本研究的方法和技术路线，以及本研究与其他相关工作的区别和优势。</p>
+<h3 id="1_2">1 数据预处理<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>首先，根据目标领域确定合适的检索策略，在 Web of Science 上检索相关论文信息并导出数据，使用 Python 工具进行清洗、存储等操作。</li>
+</ul>
+<h3 id="2_2">2 抽取实体关系<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>其次，利用自然语言处理等方法对论文信息数据进行分析，提取出论文标题、摘要、关键词、作者、机构、基金、分类、参考文献等实体，并根据一定的规则确定实体之间的关系，形成知识图谱。</li>
+</ul>
+<p><a class="glightbox" href="../img/image-20230330014741257.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20230330014741257" src="../img/image-20230330014741257.png" /></a></p>
+<ul>
+<li>具体地，本研究采用了以下方法：</li>
+<li>对于论文标题、摘要、关键词等文本信息，使用分词、词性标注、命名实体识别等方法进行预处理，并使用TF-IDF等方法提取关键词作为实体。</li>
+<li>对于作者、机构、基金、分类等非文本信息，使用字符串匹配等方法进行标准化处理，并直接作为实体。</li>
+<li>对于参考文献信息，使用字符串匹配等方法进行去重处理，并作为实体。</li>
+<li>对于实体之间的关系，根据论文信息数据中各个字段之间的逻辑关系，定义了以下几种关系类型：<ul>
+<li>论文-作者：表示论文由作者撰写。</li>
+<li>论文-机构：表示论文由机构支持或发表。</li>
+<li>论文-基金：表示论文由基金资助。</li>
+<li>论文-分类：表示论文属于某个分类领域。</li>
+<li>论文-参考文献：表示论文引用了某篇参考文献。</li>
+<li>论文-关键词：表示论文包含了某个关键词。</li>
+<li>关键词-关键词：表示两个关键词在同一篇论文中出现过。</li>
+<li>作者-机构：表示作者隶属于某个机构。</li>
+<li>作者-作者：表示两个作者在同一篇论文中合作过。</li>
+<li>机构-机构：表示两个机构在同一篇论文中合作过。</li>
+</ul>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># 关键词同义合并，并返回合并后的单词列表</span>
-<span class="k">def</span> <span class="nf">synonymMerge</span><span class="p">(</span><span class="n">inputFile</span><span class="p">):</span>
-    <span class="n">word_list</span> <span class="o">=</span> <span class="n">all_keywords</span><span class="p">(</span><span class="n">inputFile</span><span class="p">)</span>
-    <span class="c1"># 读取映射表</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/input/related_terms.xlsx&quot;</span><span class="p">)</span>
-    <span class="n">mapping_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Original_Word&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Mapping_Word&quot;</span><span class="p">]))</span>
-    <span class="c1"># 创建一个空列表用于存储转化后的元素</span>
-    <span class="n">transformed_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="c1"># 遍历word_list列表中的每个元素</span>
-    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_list</span><span class="p">:</span>
-        <span class="c1"># 如果元素在字典中有对应的键，则用字典中的值替换它，否则保持不变</span>
-        <span class="n">new_word</span> <span class="o">=</span> <span class="n">mapping_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>
-        <span class="c1"># 将转化后的元素添加到新列表中</span>
-        <span class="n">transformed_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_word</span><span class="p">)</span>    
-    <span class="c1"># 返回合并后的列表类型的数据</span>
-    <span class="k">return</span> <span class="n">transformed_list</span>
-</code></pre></div>
-<h2 id="2">2 词频统计<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>使用 collections 模块统计词频，并将词频统计结果的前300个词导出成新的excel文档。</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">wordCount</span><span class="p">(</span><span class="n">inputFile</span><span class="p">,</span> <span class="n">outputFile</span><span class="p">):</span>
-    <span class="c1"># 同义词替换</span>
-    <span class="n">word_list</span> <span class="o">=</span> <span class="n">synonymMerge</span><span class="p">(</span><span class="n">inputFile</span><span class="p">)</span>
-    <span class="c1"># 使用collections进行词频统计，获取前300个高频词及其出现次数</span>
-    <span class="c1"># 返回一个字典，键为分词，值为出现次数</span>
-    <span class="n">word_counts</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
-    <span class="c1"># 返回一个列表，每个元素是一个元组，包含分词和出现次数</span>
-    <span class="n">word_counts_top300</span> <span class="o">=</span> <span class="n">word_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
-    <span class="c1"># 将词频统计的结果导出成新的excel文档</span>
-    <span class="c1"># 创建一个数据框存放列表数据</span>
-    <span class="n">df_word_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">word_counts_top300</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Keyword&quot;</span><span class="p">,</span> <span class="s2">&quot;Count&quot;</span><span class="p">])</span>
-    <span class="c1"># 导出数据到excel文件，并去掉索引列</span>
-    <span class="n">df_word_counts</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">outputFile</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</code></pre></div>
+<h3 id="3_2">3 构建知识图谱<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>再次，利用图论等方法对知识网络进行进一步分析，挖掘出目标领域的核心主题、核心作者、核心机构、核心期刊等信息，并将这些信息组织成为知识图谱。</li>
+</ul>
+<h3 id="4">4 泛用性推广<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>最后，根据一些预先定义好的评价指标，如覆盖度、准确度、一致性、可读性等，对构建的知识网络和知识图谱进行质量和效果的评估，并探讨其在其他领域的泛用性和可扩展性。</li>
+</ul>
+<h2 id="_4">四、研究进展<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>本节展示研究的目前已经实现或正在进行的结果和成果，以及研究的局限性和不足，以及一些可能的解决方案或改进方向。</p>
+<h3 id="1_3">1 数据清洗<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h3>
+<p>对 WOS 导出的论文信息数据进行清洗，清洗无效数据列</p>
+<p><a class="glightbox" href="../img/coredata.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="coredata" src="../img/coredata.png" /></a></p>
+<h3 id="2_3">2 术语库制作<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h3>
+<p>制作了相关术语库，用于后续词频统计时的同类词合并，以便提高统计精度</p>
+<p><a class="glightbox" href="../img/relatedterm.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="relatedterm" src="../img/relatedterm.png" /></a></p>
+<h3 id="3_3">3 词频统计与词云图<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h3>
+<p>实现了对论文关键词的词频统计以及词云图的绘制</p>
+<ul>
+<li>词频统计</li>
+</ul>
+<p><a class="glightbox" href="../img/wordcount.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="wordcount" src="../img/wordcount.png" /></a></p>
+<ul>
+<li>原文词云图</li>
+</ul>
+<p><a class="glightbox" href="../img/wordcloud_en.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="wordcloud_en" src="../img/wordcloud_en.png" /></a></p>
+<h3 id="4_1">4 机器翻译<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>接入各个平台的机器翻译API接口，用于批量翻译英文文献。</p>
+<p><a class="glightbox" href="../img/wordcloud_zh.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="wordcloud_zh" src="../img/wordcloud_zh.png" /></a></p>
+<h2 id="_5">五、最新动态<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>介绍最新出现的几个结合GPT大模型的论文分析操作，说明这些操作与你的研究有什么联系和启发，以及这些操作有什么优缺点和挑战，以及你对这些操作有什么看法或建议。</p>
+<h3 id="51-new-bing">5.1 New Bing<a class="headerlink" href="#51-new-bing" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../img/newbing.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="newbing" src="../img/newbing.jpg" /></a></p>
+<h3 id="52-chatgpt-academic">5.2 ChatGPT Academic<a class="headerlink" href="#52-chatgpt-academic" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../img/ChatGPT_Academic.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20230330031023367" src="../img/ChatGPT_Academic.png" /></a></p>
+<h3 id="53-chatgpt-zotero">5.3 ChatGPT + Zotero<a class="headerlink" href="#53-chatgpt-zotero" title="Permanent link">&para;</a></h3>
+<h2 id="_6">六、总结与展望<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>回顾研究的核心内容和主要结论，并给出一些未来的展望或期待，感谢听众的关注和参与，并邀请他们提出一些问题或反馈。</p>
 
   
 
@@ -804,11 +1168,11 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
         <!-- mkdocs-git-revision-date-localized-plugin -->
         
         最后更新:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-31T20:33:31+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-31</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-01T10:10:03+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-01</span>
         
         <br />
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-31T20:33:31+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-31</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-01T10:10:03+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-01</span>
         
 
         <!-- mkdocs-git-revision-date-plugin -->
@@ -894,7 +1258,7 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../02data_preprocessing/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 2 数据预处理" rel="prev">
+          <a href="../../Dev/05wordsclound/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 5 词云图绘制" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
             </div>
@@ -903,26 +1267,11 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
                 上一页
               </span>
               <div class="md-ellipsis">
-                2 数据预处理
+                5 词云图绘制
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../04ML_translate/" class="md-footer__link md-footer__link--next" aria-label="下一页: 4 机器翻译" rel="next">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                4 机器翻译
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
         
       </nav>
     

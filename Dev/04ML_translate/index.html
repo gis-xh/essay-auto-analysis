@@ -246,6 +246,22 @@
   
 
       
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Example/SIF/" class="md-tabs__link">
+        实践案例
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -535,6 +551,61 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          实践案例
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          实践案例
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example/SIF/" class="md-nav__link">
+        0 示例与自述以SIF为例
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -671,57 +742,41 @@
 <p><a class="glightbox" href="../img/image-20230531212451743.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image-20230531212451743" src="../img/image-20230531212451743.png" /></a></p>
 <h3 id="23">2.3 导入模块<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
 <p>导入腾讯云机器翻译 API 相关模块</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">tencentcloud.common</span> <span class="kn">import</span> <span class="n">credential</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tencentcloud.common</span> <span class="kn">import</span> <span class="n">credential</span>
 <span class="kn">from</span> <span class="nn">tencentcloud.common.profile.client_profile</span> <span class="kn">import</span> <span class="n">ClientProfile</span>
 <span class="kn">from</span> <span class="nn">tencentcloud.common.profile.http_profile</span> <span class="kn">import</span> <span class="n">HttpProfile</span>
 <span class="kn">from</span> <span class="nn">tencentcloud.common.exception.tencent_cloud_sdk_exception</span> <span class="kn">import</span> <span class="n">TencentCloudSDKException</span>
 <span class="kn">from</span> <span class="nn">tencentcloud.tmt.v20180321</span> <span class="kn">import</span> <span class="n">tmt_client</span><span class="p">,</span> <span class="n">models</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h3 id="24">2.4 添加密钥<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
 <p>将创建好的腾讯云 API 密钥对和项目 ID 添加到程序中，才能正常的使用 API 的翻译功能。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">secretId</span> <span class="o">=</span> <span class="s2">&quot;……&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">secretId</span> <span class="o">=</span> <span class="s2">&quot;……&quot;</span>
 <span class="n">secretKey</span> <span class="o">=</span> <span class="s2">&quot;……&quot;</span>
 <span class="n">projectId</span> <span class="o">=</span> <span class="err">……</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h3 id="25">2.5 设置源语言和目标语言<a class="headerlink" href="#25" title="Permanent link">&para;</a></h3>
 <p>程序中自动识别源语言，将所有内容都翻译为中文。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>source = &quot;auto&quot;
+<div class="highlight"><pre><span></span><code>source = &quot;auto&quot;
 target = &quot;zh&quot;
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h2 id="3">3 读取数据<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>将读取到的数据表列名转换为以列表的形式，以便与 API 进行翻译交互。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">read_column</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="n">source_column</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">read_column</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="n">source_column</span><span class="p">):</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">source_file</span><span class="p">)</span>
     <span class="n">words</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">source_column</span><span class="p">]</span>
     <span class="n">words_list</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># 转换为列表</span>
     <span class="k">return</span> <span class="n">words_list</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h2 id="4">4 翻译交互<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <h2 id="5">5 存储翻译结果<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <p>在实现与 API 的交互并得到返回的翻译数据后，将其与源数据进行合并，并导出成新的 excel 表格进行存储。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">write_results</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="n">source_column</span><span class="p">,</span> <span class="n">target_file</span><span class="p">,</span> <span class="n">target_column</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">write_results</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="n">source_column</span><span class="p">,</span> <span class="n">target_file</span><span class="p">,</span> <span class="n">target_column</span><span class="p">):</span>
     <span class="n">source_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">source_file</span><span class="p">)</span> <span class="c1"># 读取原文件为一个DataFrame</span>
     <span class="n">target_text_list</span> <span class="o">=</span> <span class="n">translate_words</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="n">source_column</span><span class="p">)</span> <span class="c1"># 调用翻译函数，返回一个list</span>
     <span class="n">target_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">target_text_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target_column</span><span class="p">])</span> <span class="c1"># 将list转换为一个DataFrame，并指定列名</span>
     <span class="n">new_df</span> <span class="o">=</span> <span class="n">source_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_df</span><span class="p">)</span> <span class="c1"># 将两个DataFrame按照索引合并为一个新的DataFrame</span>
     <span class="n">new_df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">target_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
   
 

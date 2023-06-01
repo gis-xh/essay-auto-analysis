@@ -18,6 +18,8 @@
         <link rel="prev" href="../04ML_translate/">
       
       
+        <link rel="next" href="../../Example/SIF/">
+      
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
@@ -239,6 +241,22 @@
     <li class="md-tabs__item">
       <a href="../00setup/" class="md-tabs__link md-tabs__link--active">
         开发记录
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Example/SIF/" class="md-tabs__link">
+        实践案例
       </a>
     </li>
   
@@ -491,6 +509,61 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          实践案例
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          实践案例
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example/SIF/" class="md-nav__link">
+        0 示例与自述以SIF为例
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -578,24 +651,7 @@
 <p>在对关键词进行 合并、首字母大写、词频统计、翻译等一系列处理后，使用词云包与 <code>pyecharts</code> 包来实现关键词词云图的显示。</p>
 <h2 id="2">2 词云图绘制<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <h3 id="21">2.1 创建和保存词云图像<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_wordcloud</span><span class="p">(</span><span class="n">word_freq</span><span class="p">,</span> <span class="n">font_path</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_wordcloud</span><span class="p">(</span><span class="n">word_freq</span><span class="p">,</span> <span class="n">font_path</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
     <span class="n">wc</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span>
         <span class="c1"># width = 300,</span>
         <span class="c1"># height = 200,</span>
@@ -613,23 +669,10 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">wc</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./output/</span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h3 id="22">2.2 绘制关键词词云<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>这里默认为英文词云，中文词云需要另行设置。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">keywordCloud</span><span class="p">(</span><span class="n">inputFile</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">keywordCloud</span><span class="p">(</span><span class="n">inputFile</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">):</span>
     <span class="c1"># 读取 xlsx 文件中的数据</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">inputFile</span><span class="p">)</span>
     <span class="c1"># 将数据转换成字典，键为关键词，值为频数</span>
@@ -643,7 +686,7 @@
         <span class="s1">&#39;times.ttf&#39;</span> <span class="k">if</span> <span class="n">lang</span> <span class="o">==</span> <span class="s1">&#39;en&#39;</span> <span class="k">else</span> <span class="s1">&#39;simsun.ttc&#39;</span><span class="p">,</span>
         <span class="sa">f</span><span class="s1">&#39;wordcloud_</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s1">.png&#39;</span>
     <span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
   
 
@@ -761,6 +804,21 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
             </div>
           </a>
         
+        
+          
+          <a href="../../Example/SIF/" class="md-footer__link md-footer__link--next" aria-label="下一页: 0 示例与自述以SIF为例" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                0 示例与自述以SIF为例
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
         
       </nav>
     

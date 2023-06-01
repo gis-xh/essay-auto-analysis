@@ -246,6 +246,22 @@
   
 
       
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Example/SIF/" class="md-tabs__link">
+        实践案例
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -473,6 +489,61 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          实践案例
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          实践案例
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Example/SIF/" class="md-nav__link">
+        0 示例与自述以SIF为例
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -538,17 +609,7 @@
 <h1 id="_1">开发记录（二）数据预处理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="1">1 数据清洗<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>读取从 WOS 检索结果导出的 excel 表，删为空值的列，并且将显示错误的内容批量修正</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>def<span class="w"> </span>data_cleansing<span class="o">(</span>inputFile,<span class="w"> </span>outputFile<span class="o">)</span>:
+<div class="highlight"><pre><span></span><code>def<span class="w"> </span>data_cleansing<span class="o">(</span>inputFile,<span class="w"> </span>outputFile<span class="o">)</span>:
 <span class="w">    </span><span class="c1"># 读取 xls 文件中的数据</span>
 <span class="w">    </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>pd.read_excel<span class="o">(</span>f<span class="s1">&#39;../data/input/{inputFile}&#39;</span><span class="o">)</span>
 <span class="w">    </span><span class="c1"># 删除所有全为缺失值的列</span>
@@ -559,18 +620,10 @@
 <span class="w">    </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>df.replace<span class="o">({</span><span class="s1">&#39;&amp;#8208; &#39;</span>:<span class="w"> </span><span class="s1">&#39;-&#39;</span>,<span class="w"> </span><span class="s1">&#39;&amp;#8211; &#39;</span>:<span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="o">}</span>,<span class="w"> </span><span class="nv">regex</span><span class="o">=</span>True<span class="o">)</span>
 <span class="w">    </span><span class="c1"># 将处理过的数据导出到新的 Excel 文件中</span>
 <span class="w">    </span>df.to_excel<span class="o">(</span>outputFile,<span class="w"> </span><span class="nv">index</span><span class="o">=</span>False<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <h2 id="2">2 核心数据筛选<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <p>将论文的相关核心数据（原文标题，期刊，作者关键词，WOS 关键词，摘要，地址，发表年份，DOI 等）从中筛选出来，导出成新的文件</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">coreDataSelect</span><span class="p">(</span><span class="n">inputFile</span><span class="p">,</span> <span class="n">outputFile</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">coreDataSelect</span><span class="p">(</span><span class="n">inputFile</span><span class="p">,</span> <span class="n">outputFile</span><span class="p">):</span>
     <span class="c1"># 读取 xlsx 文件中的数据</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">inputFile</span><span class="p">)</span>
     <span class="c1"># 筛选出目标表头</span>
@@ -579,7 +632,7 @@
     <span class="c1"># 将表头进行翻译</span>
     <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;原文标题&quot;</span><span class="p">,</span> <span class="s2">&quot;期刊&quot;</span><span class="p">,</span> <span class="s2">&quot;作者关键词&quot;</span><span class="p">,</span> <span class="s2">&quot;WOS 关键词&quot;</span><span class="p">,</span> <span class="s2">&quot;摘要&quot;</span><span class="p">,</span> <span class="s2">&quot;地址&quot;</span><span class="p">,</span> <span class="s2">&quot;发表年份&quot;</span><span class="p">,</span> <span class="s2">&quot;DOI&quot;</span><span class="p">]</span>
     <span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">outputFile</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 
   
 
