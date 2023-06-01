@@ -8,7 +8,11 @@ comments: false
 
 - [开发环境配置](./Dev/00setup.md)
 
-## 2 使用 Conda 工具克隆项目虚拟环境
+## 2 实践案例
+
+- [示例及自述——以 SIF 为例](./Example/SIF.md)
+
+## 3 使用 Conda 工具克隆项目虚拟环境
 
 ```sh
 conda env create -n essay_auto -f essay_auto_env.yaml

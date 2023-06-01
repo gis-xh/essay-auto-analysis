@@ -60,7 +60,8 @@ nav:
     - 3 词频统计: Dev/03keywords_count.md
     - 4 机器翻译: Dev/04ML_translate.md
     - 5 词云图绘制: Dev/05wordsclound.md
-    # - 使用教程:
+  - 实践案例:
+    - 0 示例与自述以SIF为例: Example/SIF.md
 
 
 # [Extensions] 扩展
@@ -89,7 +90,7 @@ markdown_extensions:
   - toc:
       permalink: true # 固定标题位置为当前位置
   - pymdownx.highlight: # 代码块高亮
-      linenums: true # 显示行号
+      linenums: false # 不显示行号
       linenums_style: table
       # auto_title: true # 显示编程语言名称
   - pymdownx.superfences # 代码块高亮插件
