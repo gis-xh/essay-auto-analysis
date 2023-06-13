@@ -442,7 +442,7 @@
         
           <li class="md-nav__item">
   <a href="#11" class="md-nav__link">
-    1.1 关键词提取
+    1.1 文本预处理
   </a>
   
 </li>
@@ -620,7 +620,7 @@
         
           <li class="md-nav__item">
   <a href="#11" class="md-nav__link">
-    1.1 关键词提取
+    1.1 文本预处理
   </a>
   
 </li>
@@ -689,22 +689,30 @@
 <h1 id="_1">开发记录（三）关键词词频统计<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="1">1 同类词合并<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>在使用 pandas 对存储 wos 论文数据的 <code>*.xlsx</code> 文件中关键词进行词频统计前，将同义词以及相同含义的专业术语进行合并，从而提升词频统计精确度。</p>
-<h3 id="11">1.1 关键词提取<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<h3 id="11">1.1 文本预处理<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
 <p>由于 WOS 检索得到论文信息中包含文章关键词和 WOS 关键词，所以需要：</p>
 <ul>
 <li>首先，将两列关键词的内容进行拼接</li>
 <li>然后，将每行多个关键词，用分号分割成一个关键词列表</li>
-<li>最后，并将所有关键词格式化（首字母大写）</li>
+<li>接着，并将所有关键词格式化（首字母大写、将括号内的简称全大写、将少于三个字母的单词全大写）</li>
+<li>最后，返回一个处理好的关键词列表</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># 将所有关键词合并成列表并全部首字母大写化</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 先将关键词列合并，再进行文本预处理，最后返回关键词列表</span>
 <span class="k">def</span> <span class="nf">all_keywords</span><span class="p">(</span><span class="n">inputFile</span><span class="p">):</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">inputFile</span><span class="p">)</span>
     <span class="c1"># 以分号合并两列关键词内容，并以分号切割成列表，需要注意的是 &quot;; &quot; 而不是 &quot;;&quot;</span>
     <span class="n">keywords</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;作者关键词&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;; &quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;WOS 关键词&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>
     <span class="n">word_list</span> <span class="o">=</span> <span class="n">keywords</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>
+    <span class="c1"># 判断每个词组是否包含数字，如果包含数字，就保留-，否则就将-替换为空格</span>
+    <span class="n">word_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">w</span><span class="p">)</span> <span class="k">else</span> <span class="n">w</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">word_list</span><span class="p">]</span>
     <span class="c1"># 使用列表推导式和 str.title () 方法将列表中的字符串全部转换为首字母大写</span>
     <span class="c1"># str.upper () 全体大写</span>
     <span class="n">word_list_upper</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">word_list</span><span class="p">]</span>
+    <span class="c1"># 使用正则表达式匹配括号里的单词，并将其转换为大写</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+    <span class="n">word_list_upper</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\((\w+)\)&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">word_list_upper</span><span class="p">]</span>
+    <span class="c1"># 使用列表推导式和len()函数判断每个单词的长度，并将长度小于等于三的单词转换为大写</span>
+    <span class="n">word_list_upper</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="k">else</span> <span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">word_list_upper</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">word_list_upper</span>
 </code></pre></div>
 <h3 id="12">1.2 同类词合并<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
@@ -719,7 +727,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Gpp</td>
+<td>GPP</td>
 <td>Gross Primary Production</td>
 </tr>
 <tr>
@@ -727,19 +735,19 @@
 <td>Gross Primary Production</td>
 </tr>
 <tr>
-<td>Gross Primary Production (Gpp)</td>
+<td>Gross Primary Production (GPP)</td>
 <td>Gross Primary Production</td>
 </tr>
 <tr>
-<td>Gross Primary Productivity  (Gpp)</td>
+<td>Gross Primary Productivity  (GPP)</td>
 <td>Gross Primary Production</td>
 </tr>
 <tr>
-<td>Npp</td>
+<td>NPP</td>
 <td>Net Primary Production</td>
 </tr>
 <tr>
-<td>Sif</td>
+<td>SIF</td>
 <td>Solar-Induced Chlorophyll Fluorescence</td>
 </tr>
 <tr>
@@ -804,7 +812,7 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
         <!-- mkdocs-git-revision-date-localized-plugin -->
         
         最后更新:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-31T20:33:31+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-31</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-13T18:26:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-13</span>
         
         <br />
         创建日期:

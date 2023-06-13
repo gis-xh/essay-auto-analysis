@@ -732,7 +732,7 @@
 
 <h1 id="_1">开发记录（四）机器翻译<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="1">1 模块介绍<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>本模块借助了 <a href="https://cloud.tencent.com/document/api/551/15619">腾讯云机器翻译 API</a> 的批量文本翻译功能，实现对关键词列表的批量翻译，并且将翻译模块封装成单个模块，以便主模块更灵活地调用批量翻译功能。</p>
+<p>本模块借助了 <a href="https://cloud.tencent.com/document/api/551/15619">腾讯云机器翻译 API</a> 的批量文本翻译功能，实现对关键词列表的批量翻译，并且将翻译模块封装成单个模块，以便主模块更灵活地调用批量翻译功能。本模块封装在 <code>tencent_translate.py</code> 文件中。</p>
 <h2 id="2-api">2 API 相关配置<a class="headerlink" href="#2-api" title="Permanent link">&para;</a></h2>
 <h3 id="21">2.1 新建密钥<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
 <p>首先需要在腾讯云控制台中建立密钥，密钥包括 SecretId，SecretKey 两个核心内容</p>
@@ -770,12 +770,13 @@ target = &quot;zh&quot;
 <h2 id="4">4 翻译交互<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <h2 id="5">5 存储翻译结果<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <p>在实现与 API 的交互并得到返回的翻译数据后，将其与源数据进行合并，并导出成新的 excel 表格进行存储。</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">write_results</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="n">source_column</span><span class="p">,</span> <span class="n">target_file</span><span class="p">,</span> <span class="n">target_column</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">write_results</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="n">source_column</span><span class="p">,</span> <span class="n">target_file</span><span class="p">):</span>
     <span class="n">source_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">source_file</span><span class="p">)</span> <span class="c1"># 读取原文件为一个DataFrame</span>
     <span class="n">target_text_list</span> <span class="o">=</span> <span class="n">translate_words</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="n">source_column</span><span class="p">)</span> <span class="c1"># 调用翻译函数，返回一个list</span>
+    <span class="n">target_column</span> <span class="o">=</span> <span class="n">source_column</span> <span class="o">+</span> <span class="s2">&quot;_Translation&quot;</span> <span class="c1"># 翻译后文本存放的列名</span>
     <span class="n">target_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">target_text_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target_column</span><span class="p">])</span> <span class="c1"># 将list转换为一个DataFrame，并指定列名</span>
     <span class="n">new_df</span> <span class="o">=</span> <span class="n">source_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">target_df</span><span class="p">)</span> <span class="c1"># 将两个DataFrame按照索引合并为一个新的DataFrame</span>
-    <span class="n">new_df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">target_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">new_df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">target_file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># 将新的DataFrame直接写入到文件中，指定index参数</span>
 </code></pre></div>
 
   
@@ -790,7 +791,7 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
         <!-- mkdocs-git-revision-date-localized-plugin -->
         
         最后更新:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-31T22:02:25+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-31</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-13T18:26:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-13</span>
         
         <br />
         创建日期:

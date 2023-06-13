@@ -420,15 +420,69 @@
       
         <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    1 数据清洗
+    1 模块介绍
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    2 核心数据筛选
+    2 模块设计
   </a>
+  
+    <nav class="md-nav" aria-label="2 模块设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 设置工作目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 清洗空列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 核心数据筛选
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 主文件调用
+  </a>
+  
+    <nav class="md-nav" aria-label="3 主文件调用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 调用模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 检查清洗后的数据列
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -572,15 +626,69 @@
       
         <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    1 数据清洗
+    1 模块介绍
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    2 核心数据筛选
+    2 模块设计
   </a>
+  
+    <nav class="md-nav" aria-label="2 模块设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 设置工作目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 清洗空列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 核心数据筛选
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 主文件调用
+  </a>
+  
+    <nav class="md-nav" aria-label="3 主文件调用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 调用模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 检查清洗后的数据列
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -607,9 +715,21 @@
 
 
 <h1 id="_1">开发记录（二）数据预处理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="1">1 数据清洗<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h2 id="1">1 模块介绍<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>在对关键词进行 合并、首字母大写、词频统计、翻译等一系列处理后，使用词云包与 <code>pyecharts</code> 包来实现关键词词云图的显示。本模块封装在 <code>data_clean.py</code> 文件中。</p>
+<h2 id="2">2 模块设计<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 设置工作目录<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 定义要创建的目录的路径</span>
+<span class="n">workpath</span> <span class="o">=</span> <span class="s2">&quot;../data/output&quot;</span>
+
+<span class="c1"># 判断目录是否存在，如果不存在则创建</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span> <span class="p">(</span><span class="n">workpath</span><span class="p">):</span>
+    <span class="c1"># 创建目录</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span> <span class="p">(</span><span class="n">workpath</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="22">2.2 清洗空列<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>读取从 WOS 检索结果导出的 excel 表，删为空值的列，并且将显示错误的内容批量修正</p>
-<div class="highlight"><pre><span></span><code>def<span class="w"> </span>data_cleansing<span class="o">(</span>inputFile,<span class="w"> </span>outputFile<span class="o">)</span>:
+<div class="highlight"><pre><span></span><code>def<span class="w"> </span>clean_null<span class="o">(</span>inputFile<span class="o">)</span>:
 <span class="w">    </span><span class="c1"># 读取 xls 文件中的数据</span>
 <span class="w">    </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>pd.read_excel<span class="o">(</span>f<span class="s1">&#39;../data/input/{inputFile}&#39;</span><span class="o">)</span>
 <span class="w">    </span><span class="c1"># 删除所有全为缺失值的列</span>
@@ -618,20 +738,42 @@
 <span class="w">    </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>df.loc<span class="o">[</span>:,<span class="w"> </span><span class="o">(</span>df.notnull<span class="o">()</span>.sum<span class="o">()</span><span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span><span class="o">)]</span>
 <span class="w">    </span><span class="c1"># 将 &amp;#8208; 和 &amp;#8211; 都替换为 -</span>
 <span class="w">    </span><span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>df.replace<span class="o">({</span><span class="s1">&#39;&amp;#8208; &#39;</span>:<span class="w"> </span><span class="s1">&#39;-&#39;</span>,<span class="w"> </span><span class="s1">&#39;&amp;#8211; &#39;</span>:<span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="o">}</span>,<span class="w"> </span><span class="nv">regex</span><span class="o">=</span>True<span class="o">)</span>
+<span class="w">    </span><span class="c1"># 设置输出的文件名</span>
+<span class="w">    </span><span class="nv">outputFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>f<span class="s1">&#39;{workpath}/wos_cleaned.xlsx&#39;</span>
 <span class="w">    </span><span class="c1"># 将处理过的数据导出到新的 Excel 文件中</span>
 <span class="w">    </span>df.to_excel<span class="o">(</span>outputFile,<span class="w"> </span><span class="nv">index</span><span class="o">=</span>False<span class="o">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span>outputFile
 </code></pre></div>
-<h2 id="2">2 核心数据筛选<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<p>将论文的相关核心数据（原文标题，期刊，作者关键词，WOS 关键词，摘要，地址，发表年份，DOI 等）从中筛选出来，导出成新的文件</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">coreDataSelect</span><span class="p">(</span><span class="n">inputFile</span><span class="p">,</span> <span class="n">outputFile</span><span class="p">):</span>
+<h3 id="23">2.3 核心数据筛选<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p>将论文的相关核心数据（原文标题，期刊，作者关键词，WOS 关键词，摘要，作者地址，机构，，引用次数，发表年份，DOI，研究领域等）从中筛选出来，导出成新的文件</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">coreDataSelect</span><span class="p">(</span><span class="n">inputFile</span><span class="p">):</span>
     <span class="c1"># 读取 xlsx 文件中的数据</span>
+    <span class="n">inputFile</span> <span class="o">=</span> <span class="n">clean_null</span><span class="p">(</span><span class="n">inputFile</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">inputFile</span><span class="p">)</span>
     <span class="c1"># 筛选出目标表头</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;Article Title&quot;</span><span class="p">,</span> <span class="s2">&quot;Source Title&quot;</span><span class="p">,</span> <span class="s2">&quot;Author Keywords&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;Keywords Plus&quot;</span><span class="p">,</span> <span class="s1">&#39;Abstract&#39;</span><span class="p">,</span> <span class="s1">&#39;Addresses&#39;</span><span class="p">,</span> <span class="s2">&quot;Publication Year&quot;</span><span class="p">,</span> <span class="s1">&#39;DOI&#39;</span><span class="p">]]</span>
+                    <span class="s2">&quot;Keywords Plus&quot;</span><span class="p">,</span> <span class="s1">&#39;Abstract&#39;</span><span class="p">,</span> <span class="s1">&#39;Addresses&#39;</span><span class="p">,</span> <span class="s1">&#39;Affiliations&#39;</span><span class="p">,</span> <span class="s2">&quot;Times Cited, All Databases&quot;</span><span class="p">,</span> <span class="s2">&quot;Publication Year&quot;</span><span class="p">,</span> <span class="s1">&#39;DOI&#39;</span><span class="p">,</span> <span class="s1">&#39;Research Areas&#39;</span><span class="p">]]</span>
     <span class="c1"># 将表头进行翻译</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;原文标题&quot;</span><span class="p">,</span> <span class="s2">&quot;期刊&quot;</span><span class="p">,</span> <span class="s2">&quot;作者关键词&quot;</span><span class="p">,</span> <span class="s2">&quot;WOS 关键词&quot;</span><span class="p">,</span> <span class="s2">&quot;摘要&quot;</span><span class="p">,</span> <span class="s2">&quot;地址&quot;</span><span class="p">,</span> <span class="s2">&quot;发表年份&quot;</span><span class="p">,</span> <span class="s2">&quot;DOI&quot;</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;原文标题&quot;</span><span class="p">,</span> <span class="s2">&quot;期刊&quot;</span><span class="p">,</span> <span class="s2">&quot;作者关键词&quot;</span><span class="p">,</span> <span class="s2">&quot;WOS 关键词&quot;</span><span class="p">,</span> <span class="s2">&quot;摘要&quot;</span><span class="p">,</span> <span class="s2">&quot;作者地址&quot;</span><span class="p">,</span> <span class="s2">&quot;机构&quot;</span><span class="p">,</span> <span class="s2">&quot;引用次数&quot;</span><span class="p">,</span> <span class="s2">&quot;发表年份&quot;</span><span class="p">,</span> <span class="s2">&quot;DOI&quot;</span><span class="p">,</span> <span class="s2">&quot;研究领域&quot;</span><span class="p">]</span>
+    <span class="n">outputFile</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">workpath</span><span class="si">}</span><span class="s1">/wos_coredata_cleaned.xlsx&#39;</span>
     <span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">outputFile</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">outputFile</span>
+</code></pre></div>
+<h2 id="3">3 主文件调用<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 调用模块<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>在主文件 <code>wos_essay.ipynb</code> 文件中，导入模块，调用核心数据筛选函数</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">data_clean</span> <span class="kn">import</span> <span class="n">coreDataSelect</span> <span class="k">as</span> <span class="n">data_clean</span>
+<span class="n">inputFile1</span> <span class="o">=</span> <span class="s1">&#39;savedrecs.xls&#39;</span>
+<span class="n">outputFile1</span> <span class="o">=</span> <span class="n">data_clean</span><span class="p">(</span><span class="n">inputFile1</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="32">3.2 检查清洗后的数据列<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">outputFile1</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</code></pre></div>
+<p>输出结果如下：</p>
+<div class="highlight"><pre><span></span><code>Index([&#39;原文标题&#39;, &#39;期刊&#39;, &#39;作者关键词&#39;, &#39;WOS 关键词&#39;, &#39;摘要&#39;, &#39;作者地址&#39;, &#39;机构&#39;, &#39;引用次数&#39;, &#39;发表年份&#39;,
+       &#39;DOI&#39;, &#39;研究领域&#39;],
+      dtype=&#39;object&#39;)
 </code></pre></div>
 
   
@@ -646,7 +788,7 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
         <!-- mkdocs-git-revision-date-localized-plugin -->
         
         最后更新:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-31T20:33:31+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-31</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-13T18:26:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-13</span>
         
         <br />
         创建日期:
