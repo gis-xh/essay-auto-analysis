@@ -4,7 +4,7 @@
 
 ## 1 模块介绍
 
-本模块借助了 [腾讯云机器翻译 API](https://cloud.tencent.com/document/api/551/15619) 的批量文本翻译功能，实现对关键词列表的批量翻译，并且将翻译模块封装成单个模块，以便主模块更灵活地调用批量翻译功能。
+本模块借助了 [腾讯云机器翻译 API](https://cloud.tencent.com/document/api/551/15619) 的批量文本翻译功能，实现对关键词列表的批量翻译，并且将翻译模块封装成单个模块，以便主模块更灵活地调用批量翻译功能。本模块封装在 `tencent_translate.py` 文件中。
 
 
 
@@ -80,11 +80,12 @@ def read_column(source_file, source_column):
 在实现与 API 的交互并得到返回的翻译数据后，将其与源数据进行合并，并导出成新的 excel 表格进行存储。
 
 ```python
-def write_results(source_file, source_column, target_file, target_column):
+def write_results(source_file, source_column, target_file):
     source_df = pd.read_excel(source_file) # 读取原文件为一个DataFrame
     target_text_list = translate_words(source_file, source_column) # 调用翻译函数，返回一个list
+    target_column = source_column + "_Translation" # 翻译后文本存放的列名
     target_df = pd.DataFrame(target_text_list, columns=[target_column]) # 将list转换为一个DataFrame，并指定列名
     new_df = source_df.join(target_df) # 将两个DataFrame按照索引合并为一个新的DataFrame
-    new_df.to_excel(target_file, index=False)
+    new_df.to_excel(target_file, index=False) # 将新的DataFrame直接写入到文件中，指定index参数
 ```
 

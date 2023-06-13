@@ -3,7 +3,7 @@ import pandas as pd
 import openpyxl
 
 
-''' 1.1 设置工作目录
+''' 1 设置工作目录
 '''
 # 定义要创建的目录的路径
 workpath = "../data/output"
@@ -14,7 +14,7 @@ if not os.path.exists (workpath):
     os.makedirs (workpath)
 
 
-''' 1.2 清洗空列
+''' 2 清洗空列
 '''
 def clean_null(inputFile):
     # 读取 xls 文件中的数据
@@ -31,7 +31,7 @@ def clean_null(inputFile):
     df.to_excel(outputFile, index=False)
     return outputFile
 
-''' 1.3 核心数据筛选
+''' 3 核心数据筛选
 '''
 def coreDataSelect(inputFile):
     # 读取 xlsx 文件中的数据

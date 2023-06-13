@@ -63,9 +63,10 @@ def translate_words(source_file, source_column):
         print(err)
 
 # 翻译结果存储
-def write_results(source_file, source_column, target_file, target_column):
+def write_results(source_file, source_column, target_file):
     source_df = pd.read_excel(source_file) # 读取原文件为一个DataFrame
     target_text_list = translate_words(source_file, source_column) # 调用翻译函数，返回一个list
+    target_column = source_column + "_Translation" # 翻译后文本存放的列名
     target_df = pd.DataFrame(target_text_list, columns=[target_column]) # 将list转换为一个DataFrame，并指定列名
     new_df = source_df.join(target_df) # 将两个DataFrame按照索引合并为一个新的DataFrame
     new_df.to_excel(target_file, index=False) # 将新的DataFrame直接写入到文件中，指定index参数
