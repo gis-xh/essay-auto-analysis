@@ -36,12 +36,40 @@ from tencentcloud.tmt.v20180321 import tmt_client, models
 
 ### 2.4 添加密钥
 
-将创建好的腾讯云 API 密钥对和项目 ID 添加到程序中，才能正常的使用 API 的翻译功能。
+#### 2.4.1 安装 python-dotenv
+
+```sh
+pip install python-dotenv
+```
+
+#### 2.4.2 将密钥写入环境变量
+
+在文件的同目录下创建 `.env` 文件，写入创建好的密钥信息。
+
+```sh
+tencent_secretId = "……"
+tencent_secretKey = "……"
+tencent_projectId = ……
+```
+
+#### 2.4.3 添加密钥
+
+首先，导入环境变量相关包
 
 ```python
-secretId = "……"
-secretKey = "……"
-projectId = ……
+import os
+import sys
+from dotenv import load_dotenv, find_dotenv
+```
+
+然后，将创建好的腾讯云 API 密钥对和项目 ID 添加到程序中，才能正常的使用 API 的翻译功能。
+
+```python
+sys.path.append('../..')
+_ = load_dotenv(find_dotenv())
+secretId = os.environ['tencent_secretId']
+secretKey = os.environ['tencent_secretKey']
+projectId = os.environ['tencent_projectId']
 ```
 
 ### 2.5 设置源语言和目标语言

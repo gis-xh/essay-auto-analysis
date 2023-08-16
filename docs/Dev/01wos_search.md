@@ -52,7 +52,7 @@ Agriculture
 
 在导出时，设置记录内容为：完整记录，则会将检索到的论文全部相关信息导出到 Excel 表格中。
 
-![image-20230612162552944](./img/image-20230612162552944.png)
+![image-20230710164309477](./img/image-20230710164309477.png)
 
 <center>图 3 导出检索结果的完整记录</center>
 
@@ -66,8 +66,8 @@ Agriculture
 (TS=(Solar-Induced Chlorophyll Fluorescence) OR TS=(Solar Induced Chlorophyll Fluorescence)) AND (TS=(Agriculture) OR TS=(Yield) OR TS=(Crop))
 ```
 
-在扩大检索范围后，文献的数量从 30 篇增加到了 260 篇，我们将结果重新导出即可。需要注意的是，想要导出所有文献，必须选择如下内容。
+在扩大检索范围后，文献的数量从 35 篇增加到了 332 篇，我们将结果重新导出即可。需要注意的是，想要导出所有文献，必须选择如下内容。
 
-![image-20230612170521674](./img/image-20230612170521674.png)
+![image-20230710164915154](./img/image-20230710164915154.png)
 
 <center>图 4 重新检索的结果</center>

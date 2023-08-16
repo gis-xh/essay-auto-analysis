@@ -1,4 +1,5 @@
 keys.md
-code/__pycache__/
-code/.ipynb_checkpoints/
+*__pycache__/
+*.ipynb_checkpoints/
 data/output/
+*.env

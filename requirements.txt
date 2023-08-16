@@ -1,0 +1,16 @@
+pandas
+matplotlib
+openpyxl
+tencentcloud-sdk-python
+wordcloud
+pyecharts
+pgvector
+psycopg2-binary
+python-dotenv
+openai
+tiktoken
+langchain
+pypdf
+unstructured
+gradio
+sentence_transformers
