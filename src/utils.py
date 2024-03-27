@@ -4,11 +4,15 @@ import pandas as pd
 import collections
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
+import datetime
 
 # 1. 设置工作目录
 # 定义要创建的目录的路径
-input_path = "../data/input"
-output_path = "../data/output"
+related_file = '../data/input/related_terms.xlsx'
+output_path = '../data/output'
+# 读取当前日期, 用于输入文件名
+today = datetime.date.today()
+formatted_today = today.strftime('%Y_%m_%d')
 
 # 判断目录是否存在，如果不存在则创建
 if not os.path.exists(output_path):
@@ -23,7 +27,7 @@ class DataClean:
 
     # 1. 清洗空列, 类中的第一个参数是当前所在的对象本身
     def clean_null(self, input_file):
-        df = pd.read_excel(f'{input_path}/{input_file}')
+        df = pd.read_excel(input_file)
         # 删除所有全为缺失值的列
         df = df.dropna(axis=1, how='all')
         # 删除只有列名没有数据的列
@@ -31,7 +35,7 @@ class DataClean:
         # 将错误编码的 &#8208; 和 &#8211; 都替换为 -
         df = df.replace({'&#8208; ': '-', '&#8211; ': '-'}, regex=True)
         # 设置输出的文件名
-        output_file = f'{output_path}/wos_cleaned.xlsx'
+        output_file = f'{output_path}/wos_cleaned_{formatted_today}.xlsx'
         df.to_excel(output_file, index=False)
         return output_file
 
@@ -42,11 +46,11 @@ class DataClean:
         # 筛选出目标表头
         df = df.loc[:, ["Article Title", "Source Title", "Author Keywords",
                         "Keywords Plus", 'Abstract', 'Addresses', 'Affiliations',
-                        "Times Cited, All Databases", "Publication Year", 'DOI', 'Research Areas']]
+                        "Times Cited, All Databases", "Publication Year", 'DOI', "WoS Categories", 'Research Areas']]
         # 将表头进行翻译
         df.columns = ["Title", "Source", "Keywords", "WOS_Keywords", "Abstract",
-                      "Addresses", "Affiliations", "Cited", "Publication_Year", "DOI", "Research_Areas"]
-        output_file = f'{output_path}/wos_coredata_cleaned.xlsx'
+                      "Addresses", "Affiliations", "Cited", "Publication_Year", "DOI", "WOS_Categories", "Research_Areas"]
+        output_file = f'{output_path}/wos_coredata_cleaned_{formatted_today}.xlsx'
         df.to_excel(output_file, index=False)
         return output_file
 
@@ -62,7 +66,7 @@ class KeywordsCount:
         # 以分号合并两列关键词内容，并以分号切割成列表，需要注意的是 "; " 而不是 ";"
         keywords = df["Keywords"].str.cat(
             sep="; ") + df["WOS_Keywords"].str.cat(sep="; ")
-        # keywords = df["作者关键词"].str.cat(sep="; ")
+        # keywords = df["Keywords"].str.cat(sep="; ")
         word_list = keywords.split("; ")
         # 判断每个词组是否包含数字，如果包含数字，就保留-，否则就将-替换为空格
         word_list = [w if any(c.isdigit() for c in w)
@@ -82,7 +86,7 @@ class KeywordsCount:
     def synonym_merge(self, input_file):
         word_list = self.all_keywords(input_file)
         # 读取映射表
-        df = pd.read_excel(f'{input_path}/related_terms.xlsx')
+        df = pd.read_excel(related_file)
         mapping_dict = dict(zip(df["Original_Word"], df["Mapping_Word"]))
         # 创建一个空列表用于存储转化后的元素
         transformed_list = []
@@ -98,16 +102,16 @@ class KeywordsCount:
     def words_count(self, input_file):
         # 同义词替换
         word_list = self.synonym_merge(input_file)
-        # 使用collections进行词频统计，获取前300个高频词及其出现次数
+        # 使用collections进行词频统计，获取前120个高频词及其出现次数
         # 返回一个字典，键为分词，值为出现次数
         word_counts = collections.Counter(word_list)
         # 返回一个列表，每个元素是一个元组，包含分词和出现次数
-        word_counts_top100 = word_counts.most_common(100)
+        word_counts_top100 = word_counts.most_common(120)
         # 将词频统计的结果导出成新的excel文档
         # 创建一个数据框存放列表数据
         df_word_counts = pd.DataFrame(
             word_counts_top100, columns=["Keyword", "Count"])
-        output_file = f'{output_path}/keyword_count.xlsx'
+        output_file = f'{output_path}/keyword_count_{formatted_today}.xlsx'
         # 导出数据到excel文件，并去掉索引列
         df_word_counts.to_excel(output_file, index=False)
         return output_file
@@ -152,5 +156,5 @@ class WordCloudDraw:
         wc = self.create_wordcloud(
             word_freq,
             f'TIMES.ttf' if lang == 'en' else f'simsun.ttc',
-            f'wos_wordcloud_{lang}.png'
+            f'wos_wordcloud_{lang}_{formatted_today}.png'
         )
