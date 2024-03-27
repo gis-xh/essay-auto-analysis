@@ -14,3 +14,4 @@ pypdf
 unstructured
 gradio
 sentence_transformers
+streamlit

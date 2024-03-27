@@ -1,4 +1,8 @@
-# 腾讯云机器翻译API调用
+"""
+腾讯云机器翻译API调用
+目前仅支持批量翻译关键词列表
+"""
+
 import os
 import sys
 from dotenv import load_dotenv, find_dotenv
@@ -23,10 +27,12 @@ sys.path.append('../..')
 _ = load_dotenv(find_dotenv())
 secretId = os.environ['tencent_secretId']
 secretKey = os.environ['tencent_secretKey']
-projectId = 1286675
+projectId = int(os.environ['tencent_projectId'])
 # 设置源语言和目标语言
 source = "auto"
 target = "zh"
+
+# print(type(projectId))
 
 # 批量翻译
 def translate_words(source_file, source_column):
@@ -67,7 +73,7 @@ def translate_words(source_file, source_column):
         print(err)
 
 # 翻译结果存储
-def write_results(source_file, source_column, target_file):
+def translate_results(source_file, source_column, target_file):
     source_df = pd.read_excel(source_file) # 读取原文件为一个DataFrame
     target_text_list = translate_words(source_file, source_column) # 调用翻译函数，返回一个list
     target_column = source_column + "_Translation" # 翻译后文本存放的列名

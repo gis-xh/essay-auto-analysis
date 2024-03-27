@@ -17,6 +17,7 @@ from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 sys.path.append('../..')
 _ = load_dotenv(find_dotenv())
 openai.api_key = os.environ['OPENAI_API_KEY']
+# openai.api_base = os.environ['OPENAI_API_BASE']
 
 # 2. 加载 OpenAI Embedding 模型
 op_embedding = OpenAIEmbeddings()
@@ -55,4 +56,4 @@ hf_embedding = HuggingFaceEmbeddings(
 CONNECTION_STRING = "postgresql+psycopg2://postgres:123qwe@localhost:4321/essay_anaylsis"
 # PGVector 模块将尝试用集合的名称创建一个表.
 # 因此, 请确保集合名称是唯一的, 并且用户具有创建表的权限.
-COLLECTION_NAME = "llm_langchain_essay"
+COLLECTION_NAME = "text2vec_langchain_essay"

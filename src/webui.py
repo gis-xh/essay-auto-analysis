@@ -10,8 +10,8 @@ from langchain.vectorstores.pgvector import PGVector
 
 
 # 1. 加载相关参数
-embedding = op_embedding
-# embedding = hf_embedding
+# embedding = op_embedding
+embedding = hf_embedding
 # PGVector 数据库连接字符串
 CONNECTION_STRING = CONNECTION_STRING
 # 集合名称
@@ -66,7 +66,7 @@ def add_files():
 with gr.Blocks() as demo:
     gr.Markdown(
         """
-        # <center>论文自动化分析工具</center>
+        # <center>论文自动化分析工具 v1.0</center>
         """
     )
 
@@ -119,7 +119,12 @@ with gr.Blocks() as demo:
         # 回车事件
         message.submit(fn=llm_predict, inputs=[message, top_k, temperature, chatbot], outputs=[message, chatbot])
         # 单击事件
-        send.click(fn=llm_predict, inputs=[message, top_k, temperature, chatbot], outputs=[message, chatbot], api_name="llm_predict")
+        send.click(fn=llm_predict, 
+                   inputs=[message, top_k, temperature, chatbot],
+                   outputs=[message, chatbot],
+                   api_name="llm_predict")
+        
+        # init_vs.click(fn=add_files)
 
 
 if __name__ == "__main__":

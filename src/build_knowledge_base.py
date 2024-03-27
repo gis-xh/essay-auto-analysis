@@ -1,13 +1,30 @@
+"""
+构建本地知识库:
+1. 读取预处理后含有论文相关信息的 xlsx 表格, 先转换成 csv 格式
+2. 调用 embedding 模型分割成向量
+3. 构建本地的 pg 向量数据库用于存储分割后的向量
+"""
+
 import pandas as pd
-from langchain.embeddings.openai import OpenAIEmbeddings
+import config
 from langchain.document_loaders.csv_loader import CSVLoader
 from langchain.vectorstores.pgvector import PGVector
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-# 2. 加载指定路径下所有文件
+# 0. 加载相关参数
+# embedding = config.op_embedding
+embedding = config.hf_embedding
+# PGVector 数据库连接字符串
+CONNECTION_STRING = config.CONNECTION_STRING
+# 集合名称
+COLLECTION_NAME = config.COLLECTION_NAME
+
+# 1. 加载指定路径下所有文件
 workpath = "data/output"
 excel_file = f"{workpath}/wos_coredata_cleaned.xlsx"
 csv_file = f"{workpath}/paper_title_abstract.csv"
+
+# 2. xlsx 转 csv
 
 
 def xlsx2csv():
@@ -15,6 +32,8 @@ def xlsx2csv():
     df = pd.read_excel(excel_file).loc[:, ["Title", 'Abstract']]
     # 用pandas.DataFrame.to_csv()将DataFrame对象写入到csv文件中
     df.to_csv(csv_file, index=False)
+
+# 3， 加载 csv 文件
 
 
 def load_files():
@@ -26,8 +45,7 @@ def load_files():
     return data
 
 
-
-# 3. 分割文本
+# 4. 分割文本
 
 
 def split_doc():
@@ -46,16 +64,8 @@ def split_doc():
     print("分割前:", len(data), "\n分割后:", len(split_texts))
     return split_texts
 
-# 4. 加载 embedding 模型
-embedding = OpenAIEmbeddings()
 
 # 5. 连接向量数据库并创建表
-
-# PGVector 数据库连接字符串
-CONNECTION_STRING = "postgresql+psycopg2://postgres:123qwe@localhost:4321/essay_anaylsis"
-# PGVector 模块将尝试用集合的名称创建一个表.
-# 因此, 请确保集合名称是唯一的, 并且用户具有创建表的权限.
-COLLECTION_NAME = "llm_langchain_essay"
 
 
 def create_vectorstore():
@@ -66,4 +76,6 @@ def create_vectorstore():
         collection_name=COLLECTION_NAME,
         connection_string=CONNECTION_STRING,
     )
+    return vectordb
+
 create_vectorstore()
