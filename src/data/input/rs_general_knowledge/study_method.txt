@@ -1,0 +1,30 @@
+Tile-based classification
+automatic sampling
+random forest (RF)
+TL-LUE
+google earth engine (GEE)
+fusing data
+multi-sensor analysis
+deep learning
+GEE+DL
+GEE+Local ML
+optimal filter-based phenology detection (OFP)
+Bidirectional reflectance distribution function (BRDF)
+pixel and phenology-based algorithm
+data integration
+threshold method
+Temporal Smoothing Algorithms
+simple linear iterativeclustering (SLIC)
+superpixel segmentation
+Kriging interpolation method
+rectangular hyperbolic model
+PhenoRice
+IrriMap_CN
+accuracy assessment
+estimating area
+response design
+sampling design
+monthly composites
+Pixel-Based and Object-Based Algorithms
+Spatial domain transfer
+OLS regression

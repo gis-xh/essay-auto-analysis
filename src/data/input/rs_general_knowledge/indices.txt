@@ -1,0 +1,16 @@
+NDVI
+EVI
+EVI2
+LSWI
+GPP
+NPP
+LAI
+NIR
+red-edge band
+slope
+SWIR
+kNDVI
+harvest indices (HI)
+FPAR
+radiation use efficiency (RUE)
+light use efficiency (LUE)

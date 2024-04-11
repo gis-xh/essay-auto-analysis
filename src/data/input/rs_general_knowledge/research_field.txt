@@ -1,0 +1,17 @@
+growing seasons
+wheat
+wheat yield
+time series
+rice crops
+rice yield
+Phenology
+crop mapping
+land surface phenology (LSP)
+key phenological stages
+rice crops phenology
+cropping intensity
+irrigation maps
+Dataset
+land change
+multi-data sources
+maize

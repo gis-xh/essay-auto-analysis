@@ -14,7 +14,7 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 
 # 1. 加载 openai 密钥
-sys.path.append('../..')
+sys.path.append('..')
 _ = load_dotenv(find_dotenv())
 openai.api_key = os.environ['OPENAI_API_KEY']
 # openai.api_base = os.environ['OPENAI_API_BASE']

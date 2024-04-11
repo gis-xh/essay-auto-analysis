@@ -1,5 +1,8 @@
 keys.md
 *__pycache__/
 *.ipynb_checkpoints/
-data/output/
+output/
 *.env
+*.zip
+models/
+test.py

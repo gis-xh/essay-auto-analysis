@@ -1,9 +1,14 @@
 pandas
 matplotlib
+jupyterlab
 openpyxl
 tencentcloud-sdk-python
 wordcloud
 pyecharts
+py2neo
+# neo4j
+pyltp
+stanza
 pgvector
 psycopg2-binary
 python-dotenv

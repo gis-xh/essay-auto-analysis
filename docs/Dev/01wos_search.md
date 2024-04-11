@@ -71,3 +71,15 @@ Agriculture
 ![image-20230710164915154](./img/image-20230710164915154.png)
 
 <center>图 4 重新检索的结果</center>
+
+
+
+## 4 WOS 爬虫
+
+[GitHub - Guogeda/WOS: 利用python导出文献的参考信息](https://github.com/Guogeda/WOS)
+
+[GitHub - tomleung1996/wos_crawler: Web of Science Crawler](https://github.com/tomleung1996/wos_crawler)
+
+[如何批量爬取Web of Science 文献信息数据？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/548061383)
+
+[GitHub - Dramwig/WOS-spider: Python script to crawl Web of Science retrieved papers based on selenium package.](https://github.com/Dramwig/WOS-spider/)

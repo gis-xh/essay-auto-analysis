@@ -1,0 +1,20 @@
+MODIS
+MODIS LAI
+MODIS NPP
+MODIS BRDF
+MODIS GPP (MOD17)
+GLASS LAI
+Landsat 5 TM
+Landsat 7 ETM+
+Landsat 8 OLI
+Sentinel-1 SAR
+Sentinel-2 MSI
+Harmonized Landsat and Sentinel-2 (HLS)
+surface reflectance (SR)
+top of atmosphere (TOA)
+nadir BRDF adjusted reflectance (NBAR)
+unmanned aerial system (UAS)
+China Meteorological Administration (CMA)
+agricultural meteorological stations (AMSs)
+meteorological data
+land use
