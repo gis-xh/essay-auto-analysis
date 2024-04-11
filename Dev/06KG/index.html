@@ -12,21 +12,25 @@
         <meta name="author" content="gis-xh">
       
       
-        <link rel="canonical" href="https://github.com/gis-xh/essay-auto-analysis/Dev/06openai_anaylsis/">
+        <link rel="canonical" href="https://github.com/gis-xh/essay-auto-analysis/Dev/06KG/">
       
       
+        <link rel="prev" href="../05wordsclound/">
+      
+      
+        <link rel="next" href="../07LLM_anaylsis/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
-        <title>开发记录（六）结合 OpenAI 的论文批量分析 - WOS 论文自动化分析工具</title>
+        <title>6 知识图谱 - WOS 论文自动化分析工具</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -89,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#openai" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -123,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              开发记录（六）结合 OpenAI 的论文批量分析
+              6 知识图谱
             
           </span>
         </div>
@@ -235,10 +239,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../00setup/" class="md-tabs__link">
           
   
@@ -321,8 +327,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -338,22 +346,27 @@
       
         
       
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
+        
       
         
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -364,7 +377,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             开发记录
@@ -497,6 +510,148 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6 知识图谱
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6 知识图谱
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#neo4j" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neo4j 环境配置
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Neo4j 环境配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      当前环境
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      官方文档
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      启动数据库
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      工作流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07LLM_anaylsis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 知识图谱
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -596,6 +751,74 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#neo4j" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neo4j 环境配置
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Neo4j 环境配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      当前环境
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      官方文档
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      启动数据库
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      工作流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -613,19 +836,38 @@
   
 
 
-<h1 id="openai">开发记录（六）结合 OpenAI 的论文批量分析<a class="headerlink" href="#openai" title="Permanent link">&para;</a></h1>
-<p>安装 OpenAI 相关包以及向量数据库连接包</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>openai<span class="w"> </span>tiktoken<span class="w"> </span>langchain<span class="w"> </span>pypdf<span class="w"> </span>unstructured<span class="w"> </span>pgvector<span class="w"> </span>psycopg2-binary
+<h1 id="_1">开发记录（六）结合知识图谱的论文批量分析<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="neo4j">Neo4j 环境配置<a class="headerlink" href="#neo4j" title="Permanent link">&para;</a></h2>
+<h3 id="_2">当前环境<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>Windows11</code>，<code>jdk-17-windows</code>，<code>neo4j-community-5.18.1-windows</code></li>
+</ul>
+<h3 id="_3">官方文档<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Neo4j官方安装教程：https://neo4j.com/docs/operations-manual/current/installation/windows/</li>
+<li>Neo4j官方简易使用教程：https://neo4j.com/download-thanks/?edition=community</li>
+<li>Neo4j官方Python联合使用教程：https://neo4j.com/docs/python-manual/current/</li>
+</ul>
+<h3 id="_4">启动数据库<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>每次使用，都要使用 cmd 输入命令进行启动。</p>
+<div class="highlight"><pre><span></span><code>neo4j console
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="n">extension</span><span class="w"> </span><span class="n">vector</span><span class="p">;</span>
-</code></pre></div>
-<p>运行时出现了下面的警告：</p>
-<div class="highlight"><pre><span></span><code>RequestsDependencyWarning: urllib3 (1.26.15) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn&#39;t match a supported version!
-  warnings.warn(
-</code></pre></div>
-<p>参考：https://github.com/DefectDojo/django-DefectDojo/issues/3270</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>urllib3<span class="w"> </span>requests
-</code></pre></div>
+<p>第一次登录时，使用默认密码，都是 neo4j。登录后会强制重新设置密码，务必记住密码！！！</p>
+<p><a class="glightbox" href="../img/image-20240330193618397.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240330193618397" src="../img/image-20240330193618397.png" /></a></p>
+<h2 id="_5">工作流程<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ol>
+<li>使用 Zotero 阅读论文，并给论文打上标签</li>
+<li>从 Zotero 中批量导出论文信息，保存为 csv 格式，并将其放置在 <code>src/data/input/</code> 目录中</li>
+<li>打开 <code>src/build_graph.py</code> 文件，在最低部修改待分析的文件名称，然后【<strong>先启动Neo4j数据库</strong>】再运行代码</li>
+<li>如果图谱效果不好，可以在 <code>src/data/input/rs_general_knowledge/</code> 目录中，对几种属性进行填充</li>
+</ol>
+<h2 id="_6">相关参考<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://blog.csdn.net/2301_77554343/article/details/135692019">CSDN - Neo4j安装与配置以及JDK安装与配置教程（超详细）</a></li>
+<li><a href="https://github.com/liuhuanyong/QASystemOnMedicalKG">GitHub - liuhuanyong/QASystemOnMedicalKG</a></li>
+<li><a href="https://github.com/keyucui/paper_basic_analysis">GitHub - keyucui/paper_basic_analysis</a></li>
+<li><a href="https://github.com/changyiru-code/Vulnerability-Knowledge-Graph">GitHub - changyiru-code/Vulnerability-Knowledge-Graph</a></li>
+</ul>
 
 
 <!-- taken from 
@@ -638,11 +880,11 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
         <!-- mkdocs-git-revision-date-localized-plugin -->
         
         最后更新:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-08-16T10:03:01+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-11T21:27:50+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-11</span>
         
         <br />
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-08-16T10:03:01+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-11T21:27:50+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-11</span>
         
 
         <!-- mkdocs-git-revision-date-plugin -->
@@ -725,6 +967,44 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
         <footer class="md-footer">
   
     
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../05wordsclound/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 5 词云图绘制">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                5 词云图绘制
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../07LLM_anaylsis/" class="md-footer__link md-footer__link--next" aria-label="下一页: 7 知识图谱">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                7 知识图谱
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -767,7 +1047,7 @@ https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-fil
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

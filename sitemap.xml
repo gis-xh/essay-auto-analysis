@@ -2,52 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://github.com/gis-xh/essay-auto-analysis/</loc>
-         <lastmod>2024-03-27</lastmod>
+         <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/gis-xh/essay-auto-analysis/design_concept/</loc>
-         <lastmod>2024-03-27</lastmod>
+         <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/gis-xh/essay-auto-analysis/Dev/00setup/</loc>
-         <lastmod>2024-03-27</lastmod>
+         <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/gis-xh/essay-auto-analysis/Dev/01wos_search/</loc>
-         <lastmod>2024-03-27</lastmod>
+         <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/gis-xh/essay-auto-analysis/Dev/02data_preprocessing/</loc>
-         <lastmod>2024-03-27</lastmod>
+         <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/gis-xh/essay-auto-analysis/Dev/03keywords_count/</loc>
-         <lastmod>2024-03-27</lastmod>
+         <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/gis-xh/essay-auto-analysis/Dev/04ML_translate/</loc>
-         <lastmod>2024-03-27</lastmod>
+         <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/gis-xh/essay-auto-analysis/Dev/05wordsclound/</loc>
-         <lastmod>2024-03-27</lastmod>
+         <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/gis-xh/essay-auto-analysis/Dev/06openai_anaylsis/</loc>
-         <lastmod>2024-03-27</lastmod>
+         <loc>https://github.com/gis-xh/essay-auto-analysis/Dev/06KG/</loc>
+         <lastmod>2024-04-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/gis-xh/essay-auto-analysis/Dev/07LLM_anaylsis/</loc>
+         <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/gis-xh/essay-auto-analysis/Example/SIF/</loc>
-         <lastmod>2024-03-27</lastmod>
+         <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
