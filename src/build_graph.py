@@ -1,13 +1,15 @@
-"""构建论文知识图谱、
+"""构建论文知识图谱
 
     结合pandas与py2neo将数据进行清洗, 抽取三元组, 构建图数据
 
 Classes:
-    TripleExtractor: 该类用于实现三元组的抽取
-    PaperGraph: 构建论文知识图谱
+    DataClean: 数据清洗类
+    TripleExtractor: 三元组抽取类
+    GraphBuilder: 图数据构建类
 
 Functions:
-    core_select:
+    convert_string_to_list: 将字符串转换为列表
+
 
 
 """
@@ -17,6 +19,7 @@ import os
 import ast
 import pandas as pd
 import datetime
+# import tqdm
 from py2neo import Graph, Node, Relationship
 
 """设置工作目录"""
@@ -139,7 +142,7 @@ class DataClean:
         result_df = df.drop('Tags', axis=1)  # 删除原始的 Tags 列
         output_file = f'{output_path}/{file_name}_match.csv'
         result_df.to_csv(output_file, index=False)
-        print("success!")
+        print("Completed! 数据清洗完毕.")
         return output_file
 
 
@@ -225,7 +228,7 @@ class TripleExtractor:
             triples, columns=["Subject", "Predicate", "Object"])
         output_file = f"{output_path}/{file_name}_triples.csv"
         new_df.to_csv(output_file, index=False)
-        print("success!")
+        print("Completed! 三元组抽取完毕.")
         return output_file
 
 
@@ -286,11 +289,11 @@ class PaperGraph:
             convert_string_to_list)
 
         # 逐行处理数据
-        count = 0
+        # count = 0
         for index, row in df.iterrows():
             paper_dict = {}
-            count += 1
-            print(count)
+            # count += 1
+            # print(count)
             # 将论文题目作为唯一主体
             paper = row['Title']
             papers.append(paper)
@@ -343,57 +346,88 @@ class PaperGraph:
 
     def create_node(self, label: str, nodes) -> None:
         """建立节点"""
-
-        count = 0
+        # count = 0
         for node_name in nodes:
             node = Node(label, name=node_name)
             self.graph.create(node)
-            count += 1
-            print(count, len(nodes))
+            # count += 1
+            # print(count, len(nodes))
         return
 
     def create_papers_nodes(self, paper_infos) -> None:
-        """创建知识图谱的核心-代表论文本体独有信息的节点"""
+        """创建论文本体节点
 
+        创建知识图谱的核心-代表论文本体独有信息的节点
+        """
         count = 0
         for paper_dict in paper_infos:
             node = Node(
                 "Paper", name=paper_dict['name'], tags=paper_dict['tags'])
-
             self.graph.create(node)
             count += 1
-            print(count)
+        print('Paper nodes created:', count)
         return
 
-    def create_graphnodes(self) -> None:
-        """创建知识图谱论文信息中其他实体节点类型schema
-        """
+    def create_graph_nodes(self) -> None:
+        """创建其他实体节点
 
+        创建知识图谱论文信息中其他实体节点, 共 10 类节点
+            publications, tags, data_source, indices, research_field,
+            resolution, study_area, study_method, study_period, paper_infos,
+        """
         publications, tags, data_source, indices, research_field, \
             resolution, study_area, study_method, study_period, paper_infos, \
             rels_published, rels_tags, rels_data_source, rels_indices, rels_research_field, \
             rels_resolution, rels_study_area, rels_study_method, rels_study_period = self.read_nodes()
         self.create_papers_nodes(paper_infos)
         self.create_node('Publication', publications)
-        # print(len(publications))
         self.create_node('Tags', tags)
-        # print(len(tags))
         self.create_node('Data_Source', data_source)
-        # print(len(data_source))
         self.create_node('Indices', indices)
-        # print(len(indices))
         self.create_node('Research_Field', research_field)
-        # print(len(research_field))
         self.create_node('Resolution', resolution)
         self.create_node('Study_Area', study_area)
         self.create_node('Study_Method', study_method)
         self.create_node('Study_Period', study_period)
         return
 
-    def create_graphrels(self):
+    def create_relationship(self, start_node: str, end_node: str, edges: list, rel_type: str, rel_name: str) -> None:
+        """创建实体关联边
+
+        Args:
+            start_node (str): 起点节点类型
+            end_node (str): 终点节点类型
+            edges (list): 实体关系列表
+            rel_type (str): 实体关系类型
+
+        Example:
+            edges = [['paper1', 'journal1'], ['paper2', 'journal2']]
+            rel_type = 'published_in'
+            rel_name = '发表期刊'
+            create_relationship('Paper', 'Publication', edges, 'published_in', '发表期刊')
+        """
+        # 去重处理
+        set_edges = []
+        for edge in edges:
+            # 使用 ### 作为不同关系之间分隔的标志
+            set_edges.append('###'.join(edge))
+        for edge in set(set_edges):
+            # 选取数组种前两个关系, 一般关系为一对一
+            edge = edge.split('###')
+            p = edge[0]
+            q = edge[1]
+            query = "MATCH (p:%s), (q:%s) WHERE p.name='%s'AND q.name='%s' CREATE (p)-[rel:%s {name: '%s'}]->(q)" % (
+                start_node, end_node, p, q, rel_type, rel_name)
+            try:
+                self.graph.run(query)
+            except Exception as e:
+                print(e)
+
+        return
+
+    def create_graph_rels(self):
         """创建9种实体关系边
         """
-
         publications, tags, data_source, indices, research_field, \
             resolution, study_area, study_method, study_period, paper_infos, \
             rels_published, rels_tags, rels_data_source, rels_indices, rels_research_field, \
@@ -416,37 +450,24 @@ class PaperGraph:
             'Paper', 'Study_Method', rels_study_method, 'study_method', '研究方法')
         self.create_relationship(
             'Paper', 'Study_Period', rels_study_period, 'study_period', '研究时段')
-
-    def create_relationship(self, start_node: str, end_node: str, edges: list, rel_type: str, rel_name: str) -> None:
-        """创建实体关联边
-        """
-        count = 0
-        # 去重处理
-        set_edges = []
-        for edge in edges:
-            # 使用 ### 作为不同关系之间分隔的标志
-            set_edges.append('###'.join(edge))
-        all = len(set(set_edges))
-        for edge in set(set_edges):
-            # 选取数组种前两个关系, 一般关系为一对一
-            edge = edge.split('###')
-            p = edge[0]
-            q = edge[1]
-            query = "MATCH (p:%s), (q:%s) WHERE p.name='%s'AND q.name='%s' CREATE (p)-[rel:%s {name: '%s'}]->(q)" % (
-                start_node, end_node, p, q, rel_type, rel_name)
-
-            try:
-                self.graph.run(query)
-                count += 1
-                print(rel_type, count, all)
-            except Exception as e:
-                print(e)
+        # 将所有节点的关联节点数量设为属性size
+        rel_count_query = "MATCH (n) OPTIONAL MATCH (n)-[r]-() WITH n, COUNT(r) AS relCount SET n.size = relCount"
+        self.graph.run(rel_count_query)
         return
 
-    def create_graph(self, input_file: str) -> None:
+    def create_graph(self) -> None:
+        """创建图谱节点和边"""
+        print("生成知识图谱ing")
+        self.create_graph_nodes()
+        print("生成图谱边ing")
+        self.create_graph_rels()
+        print("Completed! 图谱生成完毕.")
+        return
+
+    def create_graph_from_csv(self, input_file: str) -> None:
         """通过 CSV 直接创建图数据库 - 暂不用"""
         df = pd.read_csv(input_file, encoding='utf-8')
-        # 创建结点
+        # 循环创建结点
         for i in range(len(df['Subject'])):
             node1 = Node('Title', name=df['Subject'][i])
             self.graph.merge(node1, 'Title', 'name')
@@ -465,12 +486,10 @@ if __name__ == '__main__':
     core_info = DataClean().core_select(csv_file)
     knowledge_base = DataClean().build_knowledge_base(knowledge_directory)
     match_info = DataClean().match_knowledge(core_info, knowledge_base)
-    print("step2: 生成图谱节点ing")
+    print("step2: 生成知识图谱ing")
     paper_graph = PaperGraph(match_info)
-    paper_graph.create_graphnodes()
-    print("step3: 生成图谱边ing")
-    paper_graph.create_graphrels()
+    paper_graph.create_graph()
 
     # print("step2: 论文数据三元组构建知识图谱中")
     # triples_info = TripleExtractor().create_triples(match_info)
-    # paper_graph = PaperGraph().create_graph(triples_info)
+    # paper_graph = PaperGraph().create_graph_from_csv(triples_info)

@@ -13,5 +13,12 @@ cropping intensity
 irrigation maps
 Dataset
 land change
+land cover
 multi-data sources
 maize
+artificial intelligence (AI)
+review
+soybean
+crop yield
+C3/C4 crops
+explainable AI (XAI)

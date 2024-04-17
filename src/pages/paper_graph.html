@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Papers Graph by Neovis.js</title>
+    <style type="text/css">
+        html,
+        body {
+            font: 16pt arial;
+        }
+
+        #neoViz {
+            width: 1000px;
+            height: 700px;
+            border: 1px solid lightgray;
+            font: 22pt arial;
+        }
+    </style>
+</head>
+<script src="https://rawgit.com/neo4j-contrib/neovis.js/master/dist/neovis.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    var neoViz;
+    function drawGraph() {
+        const defaultCofig = {
+            label: 'name',
+            size: "size",
+            [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                function: {
+                    title: (node) => NeoVis.objectToTitleHtml(node, ["name", "size"]),
+                }
+            },
+        };
+        const config = {
+            containerId: "neoViz",
+            // consoleDebug: true,
+            neo4j: {
+                serverUrl: " bolt://localhost:7687", // 注意：这里需要使用bolt协议
+                serverUser: "neo4j",
+                serverPassword: "cveo123456",
+            },
+            visConfig: {
+                nodes: {
+                    // shape: 'square',
+                    // shape: 'circle',
+                },
+                edges: {
+                    // 是否显示关系的箭头
+                    arrows: {
+                        // to: { enabled: true }
+                    },
+                },
+                layout: {
+                    hierarchical: {
+                        enabled: false,
+                        sortMethod: 'hubsize' // hubsize, directed
+                    }
+                }
+            },
+            labels: {
+                [NeoVis.NEOVIS_DEFAULT_CONFIG]: {
+                    label: "name",
+                    value: "size",
+                    function: {
+                        title: (node) => NeoVis.objectToTitleHtml(node, ["name", "size"])
+                    }
+                },
+                Paper: {
+                    label: false,
+                    title: "name",
+                    [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                    },
+                },
+                Publication: {
+                    [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                        cypher: {
+                            // 查询当前节点的所有相关节点
+                            value: "MATCH (n) WHERE elementID(n) = $id OPTIONAL MATCH (n)-[r]-(m) RETURN n, r, m LIMIT 2"
+                        },
+                        function: {
+                            // size: (node) => {
+                            //     return node.size;
+                            // },
+                        }
+                    },
+                },
+                Tags: {},
+                Data_Source: {},
+                Indices: {},
+                Research_Field: {},
+                Resolution: {},
+                Study_Area: {},
+                Study_Method: {},
+                Study_Period: {},
+            },
+            relationships: {
+                [NeoVis.NEOVIS_DEFAULT_CONFIG]: {
+                    label: "name",
+                    function: {
+                        title: NeoVis.objectToTitleHtml
+                    }
+                },
+                published_in: {},
+                tag: {},
+                use_data: {},
+                // ...
+            },
+            // initialCypher: "MATCH (n:Publication) OPTIONAL MATCH (n)-[r]-(m) RETURN *" // Cypher 查询指定节点的所有相关节点
+            // initialCypher: "MATCH p=()-[r:published_in]->() RETURN p" // Cypher 查询指定关系的所有相关节点
+            initialCypher: "MATCH (n)-[r]->(m) RETURN *" // Cypher 查询所有节点和关系
+        };
+        neoViz = new NeoVis.default(config);
+        // 执行渲染
+        neoViz.render();
+        // console.log(neoViz);
+
+        neoViz.registerOnEvent('clickNode', function (event) {
+            console.log('当前点击节点: ', event.node);
+        });
+
+        neoViz.registerOnEvent('clickEdge', function (event) {
+            console.log('当前点击关系: ', event.edge);
+        });
+
+        // 注册completed事件回调
+        // neoViz.registerOnEvent("completed", function () {
+        //     // 确保网络对象已存在
+        //     if (neoViz && neoViz.network && neoViz.network.body) {
+        //         // 获取所有节点
+        //         const nodes = neoViz.network.body.data.nodes.get({
+        //             filter: function (item) {
+        //                 return true; // 获取所有节点
+        //             }
+        //         });
+        //         // console.log(nodes);
+        //         // 打印每个节点的名称
+        //         // nodes.forEach(function (node) {
+        //         //     // console.log("Node ID:", node.id, "Node Name:", node.label);
+        //         //     console.log(node.group);
+        //         // });
+        //     } else {
+        //         console.error("Network object is not defined.");
+        //     }
+        // });
+    }
+</script>
+
+<body onload="drawGraph()">
+    <div id="neoViz"></div>
+    <div>
+        <button type="submit" id="reload">刷新图谱</button>
+        <button type="submit" id="stabilize">稳定图谱</button>
+        <button type="submit" id="search">查询</button>
+        <br />
+    </div>
+    <div>
+        <div id="search1">
+            <label>Node labels: </label>
+            <input rows="1" cols=42 id="node_text" />
+        </div>
+        <div id="search2">
+            <label>Relationship types: </label>
+            <input rows="1" cols=42 id="rel_text" />
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    $("#search").click(function () {
+        const node = $("#node_text").val().trim(); // 去除空格
+        const rel = $("#rel_text").val().trim();
+        if (node === "" && rel === "") {
+            alert("查询内容不可为空!");
+            return;
+        }
+        const cypher = buildCypherQuery(node, rel);
+        try {
+            neoViz.renderWithCypher(cypher);
+        } catch (e) {
+            alert('请输入正确的查询内容!');
+            console.error(cypher);
+            console.error(e);
+        }
+    });
+    function buildCypherQuery(node, rel) {
+        if (node === "") {
+            return `MATCH p=()-[r:${rel}]->() RETURN p`;
+        } else if (rel === "") {
+            return `MATCH (n:${node}) OPTIONAL MATCH (n)-[r]-(m) RETURN *`;
+        } else {
+            return `MATCH (p:${node})-[r:${rel}]->(j) RETURN p, r, j`;
+        }
+    }
+
+    $("#reload").click(function () {
+        console.log("reload");
+        neoViz.reload();
+    });
+
+    $("#stabilize").click(function () {
+        neoViz.stabilize();
+    })
+</script>
+
+</html>

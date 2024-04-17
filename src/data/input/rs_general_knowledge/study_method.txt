@@ -28,3 +28,7 @@ monthly composites
 Pixel-Based and Object-Based Algorithms
 Spatial domain transfer
 OLS regression
+machine learning
+Downscaling
+Phenology-based algorithms
+deep neural network (DNN)

@@ -1,11 +1,14 @@
 Africa
 Arctic
+Aemerica
 Arctic-Boreal
-America, Montana and North Dakota
+Montana and North Dakota, America
 China
-China, Liling County
-China, Xinghua County
-China, Huaihe basin
-China, the Heilongjiang, Hunan and Guangxi provinces
-China, Jiangsu Province
+Liling County, China
+Xinghua County, China
+Huaihe basin, China
+Heilongjiang, Hunan and Guangxi provinces, China
+Jiangsu Province, China
 Nepal
+Midwestern USA
+Dubai, United Arab Emira
